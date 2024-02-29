@@ -1,0 +1,81 @@
+# TypeScript Monorepo Template
+
+Scaffold a new project using a monorepo structure.
+Each monorepo is meant to include all the published artifacts for the project as well as the infrastructure definition.
+
+## Tasks
+
+Tasks are defined into the `turbo.json` and `package.json` files. To execute a task, just run the command at the project root:
+
+```sh
+yarn <cmd>
+```
+
+`Turborepo` will execute the task for all the workspaces that declares the same command in their `package.json` file; it also apply caching policies to the command according to the rules defined in `turbo.json`.
+
+To define a new task:
+
+- add the definition to `turbo.json` under `pipeline`;
+- add a script with the same name in `package.json` as `turbo <cmd name>`.
+
+Defined tasks are _lint_, _test_ and _typecheck_.
+
+## Dependencies
+```sh
+# install all dependencies for the project
+yarn
+
+# install a dependency to a workspace
+#   (workspace name is the name in the package.json file)
+yarn workspace <workspace name> add <package name>
+yarn workspace <workspace name> add -D <package name>
+
+# install a dependency for the monorepo
+#   (ideally a shared dev dependency)
+yarn add -D <package name>
+```
+
+To add a dependency to a lockal workspace, manually edit the target workspace's `package.json` file adding the dependency as
+
+```json
+"dependencies": {
+    "my-dependency-workspace": "workspace:*"
+}
+```
+
+## Folder structure
+
+### `/apps`
+
+It contains the applications included in the project.
+Each folder is meant to produce a deployable artifact; how and where to deploy it's demanded to the single application.
+
+Each sub-folder is a workspace.
+
+### `/packages`
+
+Packages are reusable TypeScript modules that implement a specific logic of the project. They are meant for sharing implementations across other apps and packages of the same projects, as well as being published in public registries.
+
+Packages that are meant for internal code share have `private: true` in their `package.json` file; all the others are meant to be published into the public registry.
+
+Each sub-folder is a workspace.
+
+### `/infra`
+
+### `/configs`
+
+It contains configurations shared across all apps and packages such as `TypeScript` and `ESLint`.
+
+Each sub-folder is a workspace.
+
+### `/tests`
+
+Projects that run tests that involves two or more apps or packages. They may include integration tests as well as e2e tests or load tests.
+
+Each sub-folder is a workspace.
+
+### `/docs`
+
+Technical documentation about the project. Topics that may be included are architecture overviews, [ADRs](https://adr.github.io/), coding standards, and anything that can be relevant for a developer approaching the project as a contributor or as an auditor.
+
+User documentation don't usually go in here. For public packages, it must go in the package's `README` file so that it will also be uploaded to the registry; user-faced documentation websites, when needed by the project, go under the `/apps` folder as they are threated as end-user applications.
