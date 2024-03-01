@@ -1,0 +1,47 @@
+name: 'Apply Repository settings'
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+    paths:
+      - infra/repository/**
+
+jobs:
+
+  repository_settings:
+    name: 'Apply Repository settings'
+    runs-on: ubuntu-20.04
+    
+    steps:
+
+      - uses: actions/checkout@v4
+        name: Checkout
+
+      - name: Set Terraform Version
+        id: set-terraform-version
+        run: |
+          echo "terraform_version=$(cat .terraform-version)" >> $GITHUB_OUTPUT
+
+      - uses: hashicorp/setup-terraform@v3
+        name: Setup Terraform
+        with:
+          terraform_version: ${{ steps.set-terraform-version.outputs.terraform_version }}
+          terraform_wrapper: true
+
+      - name: Terraform Init
+        working-directory: infra/repository
+        run: |
+          terraform init
+
+      - name: Terraform Plan
+        working-directory: infra/repository
+        run: |
+          terraform plan
+        
+      - name: Terraform Apply
+        working-directory: infra/repository
+        run: |
+          terraform apply --auto-approve
