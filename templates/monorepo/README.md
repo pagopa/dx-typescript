@@ -61,6 +61,7 @@ Packages that are meant for internal code sharing have `private: true` in their 
 Each sub-folder is a workspace.
 
 ### `/infra`
+It contains the _infrastructure-as-code_ project that defines the resources for the project as well as the executuion environments. Database schemas and migrations are defined here too, in case they are needed.
 
 ### `/configs`
 
