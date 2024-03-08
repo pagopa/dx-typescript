@@ -5,10 +5,11 @@ on:
     inputs:
       technology:
         type: choice
-        default: 'typescript'
+        default: 'none'
         required: true
         description: 'Choose your technology stack'
         options:
+          - none
           - typescript
       name:
         type: string
@@ -23,7 +24,15 @@ jobs:
 
     steps:
 
-      - name: 'Create repo from template'
+      - name: 'Create Blank Repository'
+        if: inputs.technology == 'none'
+        run: |
+          gh repo create pagopa/${{ inputs.name }} \
+            --private \
+            --disable-wiki
+
+      - name: 'Create Repository from Template'
+        if: inputs.technology != 'none'
         run: |
           gh repo create pagopa/${{ inputs.name }} \
             --private \
@@ -34,6 +43,7 @@ jobs:
     name: 'Repository setup'
     runs-on: ubuntu-20.04
     needs: [builder]
+    if: inputs.technology != 'none'
     environment: prod-cd
     env:
       ARM_USE_OIDC: true
@@ -94,3 +104,4 @@ jobs:
         working-directory: repo/infra/repository
         run: |
           terraform apply --auto-approve
+ 
