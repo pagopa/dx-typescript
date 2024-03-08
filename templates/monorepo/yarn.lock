@@ -65,17 +65,8 @@ __metadata:
 "@repo/typescript-config@*, @repo/typescript-config@workspace:configs/typescript-config":
   version: 0.0.0-use.local
   resolution: "@repo/typescript-config@workspace:configs/typescript-config"
-  dependencies:
-    "@tsconfig/node20": ^20.1.2
   languageName: unknown
   linkType: soft
-
-"@tsconfig/node20@npm:^20.1.2":
-  version: 20.1.2
-  resolution: "@tsconfig/node20@npm:20.1.2"
-  checksum: fc126e15f0817bd328c15bd6be7972f01ef4d55ceb493c7a83ccb9dd545e39f218711f330e3df4072b116b11180c07943da2b2bfcd7adc58414cb586db52a4c8
-  languageName: node
-  linkType: hard
 
 "@types/json-schema@npm:^7.0.12":
   version: 7.0.15
@@ -567,7 +558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo@npm:latest":
+turbo@latest:
   version: 1.12.5
   resolution: "turbo@npm:1.12.5"
   dependencies:
