@@ -9,13 +9,13 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@pagopa/eslint-config": "*",
-    "@pagopa/typescript-config": "*",
+    "@pagopa/eslint-config-node": "*",
+    "@pagopa/typescript-config-node": "*",
     "prettier": "^3.1.1",
-    "turbo": "latest"
+    "turbo": "^1.12.5"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "packageManager": "yarn@3.3.0",
   "workspaces": [
