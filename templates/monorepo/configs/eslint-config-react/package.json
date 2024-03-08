@@ -1,5 +1,5 @@
 {
-  "name": "@repo/eslint-config-react",
+  "name": "@pagopa/eslint-config-react",
   "version": "0.0.0",
   "private": true,
   "files": [

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/eslint-config-node",
+  "name": "@pagopa/eslint-config-node",
   "version": "0.0.0",
   "private": true,
   "files": [
