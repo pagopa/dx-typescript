@@ -1,11 +1,9 @@
 {
-  "name": "@repo/eslint-config",
+  "name": "@repo/eslint-config-react",
   "version": "0.0.0",
   "private": true,
   "files": [
-    "library.js",
-    "next.js",
-    "react-internal.js"
+    "index.js"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.1.0",
