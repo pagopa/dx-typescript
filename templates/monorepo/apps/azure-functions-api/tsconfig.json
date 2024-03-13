@@ -1,6 +1,6 @@
 {
   // We extend it from here!
-  "extends": "@repo/typescript-config-node/tsconfig.json",
+  "extends": "@pagopa/typescript-config-node/tsconfig.json",
  
   // You can specify your own include/exclude
   "include": ["**/*.ts"],
