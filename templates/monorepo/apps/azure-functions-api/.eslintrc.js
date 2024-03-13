@@ -1,7 +1,12 @@
 module.exports = {
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
     "ignorePatterns": [
         "node_modules",
-        "src/generated",
+        "generated",
         "**/__tests__/*",
         "**/__mocks__/*",
         "*.d.ts",
@@ -9,8 +14,13 @@ module.exports = {
         "jest.config.js",
         "**/__integrations__/*",
     ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "tsconfig.json",
+        "sourceType": "module"
+    },
     "extends": [
-        "@repo/eslint-config-node",
+        "@pagopa/eslint-config-node/index",
     ],
     "rules": {
         "@typescript-eslint/consistent-type-definitions": ["error", "type"]
