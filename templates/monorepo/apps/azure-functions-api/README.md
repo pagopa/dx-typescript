@@ -69,7 +69,7 @@ The following table contains the required ENV variables that the applicative req
 
 ## Local Execution
 
-not yet includedß
+not yet included
 
 [//]: <> (To execute locally the function copy the configuration from the `env.example` file with:)
 
