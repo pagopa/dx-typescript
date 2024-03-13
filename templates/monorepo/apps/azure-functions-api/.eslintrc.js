@@ -6,13 +6,9 @@ module.exports = {
     },
     "ignorePatterns": [
         "node_modules",
-        "generated",
-        "**/__tests__/*",
-        "**/__mocks__/*",
+        "src/generated",
         "*.d.ts",
-        "docker",
-        "jest.config.js",
-        "**/__integrations__/*",
+        "jest.config.js"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
