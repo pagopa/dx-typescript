@@ -1,0 +1,11 @@
+{
+  // We extend it from here!
+  "extends": "@repo/typescript-config-node/tsconfig.json",
+ 
+  // You can specify your own include/exclude
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"],
+  "buildOptions": {
+    "outDir": "dist"
+  }
+}
