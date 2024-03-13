@@ -4,7 +4,7 @@ const project = resolve(process.cwd(), "tsconfig.json");
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  extends: ["eslint:recommended", "prettier"],
+  extends: ["@pagopa/eslint-config/strong.js", "prettier"],
   plugins: ["only-warn"],
   globals: {
     React: true,
