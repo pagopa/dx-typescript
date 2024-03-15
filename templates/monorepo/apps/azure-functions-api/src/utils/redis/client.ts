@@ -27,7 +27,7 @@ export const createSimpleRedisClient = async (
     socket: {
       checkServerIdentity: (_hostname, _cert) => undefined,
       keepAlive: 2000,
-      reconnectStrategy: retries => Math.min(retries * 100, 3000),
+      reconnectStrategy: (retries) => Math.min(retries * 100, 3000),
       tls: enableTls
     },
     url: `${completeRedisUrl}:${redisPort}`
@@ -38,7 +38,7 @@ export const createSimpleRedisClient = async (
 
 export const CreateRedisClientTask: (
   config: RedisClientConfig
-) => TE.TaskEither<Error, redis.RedisClientType> = config =>
+) => TE.TaskEither<Error, redis.RedisClientType> = (config) =>
   pipe(
     TE.tryCatch(
       () =>
@@ -50,7 +50,7 @@ export const CreateRedisClientTask: (
         ),
       () => new Error("Error Connecting redis cluster")
     ),
-    TE.chain(redisClient => {
+    TE.chain((redisClient) => {
       redisClient.on("connect", () => {
         // eslint-disable-next-line no-console
         console.info("Client connected to redis...");
@@ -66,7 +66,7 @@ export const CreateRedisClientTask: (
         console.info("Client reconnecting...");
       });
 
-      redisClient.on("error", err => {
+      redisClient.on("error", (err) => {
         // eslint-disable-next-line no-console
         console.info(`Redis error: ${err}`);
       });
@@ -79,7 +79,6 @@ export const CreateRedisClientTask: (
     })
   );
 
-// eslint-disable-next-line functional/no-let
 let REDIS_CLIENT: redis.RedisClientType;
 
 /**
@@ -105,7 +104,7 @@ export const CreateRedisClientSingleton = (
           () => void 0 // Redis Client not yet instantiated
         ),
         TE.orElseW(() => CreateRedisClientTask(config)),
-        TE.map(newRedisClient => (REDIS_CLIENT = newRedisClient))
+        TE.map((newRedisClient) => (REDIS_CLIENT = newRedisClient))
       )
     )
   );
@@ -115,13 +114,13 @@ export const singleStringReply = (
 ): TE.TaskEither<Error, boolean> =>
   pipe(
     command,
-    TE.map(reply => reply === "OK")
+    TE.map((reply) => reply === "OK")
   );
 
-export const falsyResponseToErrorAsync = (error: Error) => (
-  response: TE.TaskEither<Error, boolean>
-): TE.TaskEither<Error, true> =>
-  pipe(
-    response,
-    TE.chain(value => (value ? TE.right(value) : TE.left(error)))
-  );
+export const falsyResponseToErrorAsync =
+  (error: Error) =>
+  (response: TE.TaskEither<Error, boolean>): TE.TaskEither<Error, true> =>
+    pipe(
+      response,
+      TE.chain((value) => (value ? TE.right(value) : TE.left(error)))
+    );
