@@ -4,7 +4,7 @@ resource "github_branch_default" "default_main" {
 }
 
 resource "github_branch_protection" "protection_main" {
-  repository_id = github_repository.this.repo_id
+  repository_id = github_repository.this.name
   pattern       = "main"
 
   required_status_checks {
