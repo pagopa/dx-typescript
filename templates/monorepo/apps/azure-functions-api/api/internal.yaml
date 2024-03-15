@@ -21,34 +21,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApplicationInfo'
-        '404':
-          description: Not Found
         '500':
           description: Internal Server error
-  /api/v1/nonce/generate:
-    post:
-      operationId: generateNonce
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenerateNonceResponse'
-        '401':
-          description: |
-            Not authorized
-            This is returned when the function key header is wrong or empty
-        '500':
-          description: Server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InternalServerError'
-        '502':
-          description: Bad Gateway
-        '504':
-          description: Gateway Timeout
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -107,10 +81,13 @@ components:
     ApplicationInfo:
       type: object
       properties:
-        message:
+        name:
+          type: string
+        version:
           type: string
       required:
-        - message
+        - name
+        - version
     ProblemJson:
       type: object
       properties:
@@ -156,16 +133,3 @@ components:
             problem.
 
             It may or may not yield further information if dereferenced.
-    GenerateNonceResponse:
-      type: object
-      properties:
-        nonce:
-          $ref: '#/components/schemas/Nonce'
-      required:
-        - nonce
-    Nonce:
-      type: string
-      pattern: >-
-        ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
-      description: UUID v4 formatted nonce as per RFC 4122
-      example: 870c6d89-a3c4-48b1-a796-cdacddaf94b4

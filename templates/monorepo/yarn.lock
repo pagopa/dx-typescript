@@ -194,7 +194,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/cosmos@npm:3.17.3, @azure/cosmos@npm:^3.17.1":
+"@azure/cosmos@npm:^3.17.1":
   version: 3.17.3
   resolution: "@azure/cosmos@npm:3.17.3"
   dependencies:
@@ -232,14 +232,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/functions@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "@azure/functions@npm:4.3.0"
+"@azure/functions@npm:4.2.0":
+  version: 4.2.0
+  resolution: "@azure/functions@npm:4.2.0"
   dependencies:
-    cookie: ^0.6.0
     long: ^4.0.0
     undici: ^5.13.0
-  checksum: ef7c6cadec2ae105cec98547ba02526ee7e99ffbb167b29c291e6d708231d0b54bbeb6c41803c2a023684989d4ba8aa0dedeaf27b645731869c5ffe37e8ecb31
+  checksum: 2c5f9e81c4239072952d05eb129f920f4a29762f8611a99f72dde39f34f5963ca85c8a6486f22dce062d2275bb1a9ae8a552a97bddd764248a163f6adcc894ea
   languageName: node
   linkType: hard
 
@@ -249,15 +248,6 @@ __metadata:
   dependencies:
     tslib: ^2.2.0
   checksum: 2c243d4c667bbc5cd3e60d4473d0f1169fcef2498a02138398af15547fe1b2870197bcb4c487327451488e4d71dee05244771d51328f03611e193b99fb9aa9af
-  languageName: node
-  linkType: hard
-
-"@babel/runtime@npm:^7.21.0":
-  version: 7.24.0
-  resolution: "@babel/runtime@npm:7.24.0"
-  dependencies:
-    regenerator-runtime: ^0.14.0
-  checksum: 7a6a5d40fbdd68491ec183ba2e631c07415119960083b4fd76564cce3751e9acd2f12ab89575e38496fa389fa06d458732776e69ee1858e366cc3fbdb049f847
   languageName: node
   linkType: hard
 
@@ -678,15 +668,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pagopa/handler-kit-azure-func@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@pagopa/handler-kit-azure-func@npm:1.2.1"
+"@pagopa/handler-kit-azure-func@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@pagopa/handler-kit-azure-func@npm:2.0.1"
   dependencies:
     "@pagopa/handler-kit": ^1.0.1
     "@pagopa/logger": ^1.0.1
     fp-ts: ^2.13.1
     io-ts: ^2.2.20
-  checksum: 768a7c90db855fe4ba08b9f2d936867970109f5eb221bb71855f98f92c7ec55576d35974519acb2aa3ca467bdd4a5b3cab769dc3d2304a31b008d069ee9249da
+  checksum: 03911b856f038fadc2f9049f45bab0a23b6bc4e3cfcdb625179db4184e7b54b901c62a40f6a9f9e6dd0fd8a65fc1c5e0c2baf3d0c170fb87113a8d257867cb4b
   languageName: node
   linkType: hard
 
@@ -828,62 +818,6 @@ __metadata:
   version: 0.1.1
   resolution: "@pkgr/core@npm:0.1.1"
   checksum: 6f25fd2e3008f259c77207ac9915b02f1628420403b2630c92a07ff963129238c9262afc9e84344c7a23b5cc1f3965e2cd17e3798219f5fd78a63d144d3cceba
-  languageName: node
-  linkType: hard
-
-"@redis/bloom@npm:1.2.0":
-  version: 1.2.0
-  resolution: "@redis/bloom@npm:1.2.0"
-  peerDependencies:
-    "@redis/client": ^1.0.0
-  checksum: 8c214227287d6b278109098bca00afc601cf84f7da9c6c24f4fa7d3854b946170e5893aa86ed607ba017a4198231d570541c79931b98b6d50b262971022d1d6c
-  languageName: node
-  linkType: hard
-
-"@redis/client@npm:1.5.14":
-  version: 1.5.14
-  resolution: "@redis/client@npm:1.5.14"
-  dependencies:
-    cluster-key-slot: 1.1.2
-    generic-pool: 3.9.0
-    yallist: 4.0.0
-  checksum: f401997c6df92055c1a59385ed2fed7ee9295860f39935821107ea2570f76168dd1b25b71a3b37b9bbfaba26a9d18080d6bcd101a4bfc3852f72cc20576c6e7d
-  languageName: node
-  linkType: hard
-
-"@redis/graph@npm:1.1.1":
-  version: 1.1.1
-  resolution: "@redis/graph@npm:1.1.1"
-  peerDependencies:
-    "@redis/client": ^1.0.0
-  checksum: caf9b9a3ff82a08ae543c356a3fed548399ae79aba5ed08ce6cf1b522b955eb5cee4406b0ed0c6899345f8fbc06dfd6cd51304ae8422c3ebbc468f53294dc509
-  languageName: node
-  linkType: hard
-
-"@redis/json@npm:1.0.6":
-  version: 1.0.6
-  resolution: "@redis/json@npm:1.0.6"
-  peerDependencies:
-    "@redis/client": ^1.0.0
-  checksum: 9fda29abc339c72593f34a23f8023b715c1f8f3d73f7c59889af02f25589bac2ad57073ad08d0b8da42cd8c258665a7b38d39e761e92945cc27aca651c8a93a5
-  languageName: node
-  linkType: hard
-
-"@redis/search@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@redis/search@npm:1.1.6"
-  peerDependencies:
-    "@redis/client": ^1.0.0
-  checksum: 0d87e6a9e40e62e46064ccfccca9a5ba7ce608890740415008acb1e83a02690edf37ac1ee878bcc0702d30a2eeba7776e7b467b71f87d8e7b278f38637161e16
-  languageName: node
-  linkType: hard
-
-"@redis/time-series@npm:1.0.5":
-  version: 1.0.5
-  resolution: "@redis/time-series@npm:1.0.5"
-  peerDependencies:
-    "@redis/client": ^1.0.0
-  checksum: 6bbdb0b793dcbd13518aa60a09a980f953554e4c745bfacc1611baa8098f360e0378e8ee6b7faf600a67f1de83f4b68bbec6f95a0740faee6164c14be3a30752
   languageName: node
   linkType: hard
 
@@ -1876,11 +1810,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "azure-functions-api@workspace:apps/azure-functions-api"
   dependencies:
-    "@azure/cosmos": 3.17.3
-    "@azure/functions": ^4.3.0
+    "@azure/functions": 4.2.0
     "@pagopa/eslint-config-node": "*"
     "@pagopa/handler-kit": ^1.1.0
-    "@pagopa/handler-kit-azure-func": ^1.2.1
+    "@pagopa/handler-kit-azure-func": ^2.0.1
     "@pagopa/io-functions-commons": ../../../../../io-functions-commons
     "@pagopa/openapi-codegen-ts": ^13.1.0
     "@pagopa/ts-commons": ^12.5.0
@@ -1889,9 +1822,9 @@ __metadata:
     "@types/node": ~18.13.0
     auto-changelog: ^2.4.0
     azure-storage: ^2.10.7
-    date-fns: ^2.30.0
     dependency-check: ^4.1.0
     dotenv: ^8.2.0
+    dotenv-cli: ^7.4.1
     eslint: ^8.57.0
     eslint-plugin-prettier: ^5.1.3
     fp-ts: 2.16.2
@@ -1899,7 +1832,6 @@ __metadata:
     modclean: ^3.0.0-beta.1
     npm-run-all: ^4.1.5
     prettier: ^3.2.5
-    redis: ^4.6.10
     shx: ^0.3.2
     swagger-cli: ^4.0.4
     ts-jest: ^24.3.0
@@ -2258,13 +2190,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cluster-key-slot@npm:1.1.2":
-  version: 1.1.2
-  resolution: "cluster-key-slot@npm:1.1.2"
-  checksum: be0ad2d262502adc998597e83f9ded1b80f827f0452127c5a37b22dfca36bab8edf393f7b25bb626006fb9fb2436106939ede6d2d6ecf4229b96a47f27edd681
-  languageName: node
-  linkType: hard
-
 "collapse-white-space@npm:^1.0.0, collapse-white-space@npm:^1.0.2":
   version: 1.0.6
   resolution: "collapse-white-space@npm:1.0.6"
@@ -2423,13 +2348,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "cookie@npm:0.6.0"
-  checksum: f56a7d32a07db5458e79c726b77e3c2eff655c36792f2b6c58d351fb5f61531e5b1ab7f46987150136e366c65213cbe31729e02a3eaed630c3bf7334635fb410
-  languageName: node
-  linkType: hard
-
 "core-util-is@npm:1.0.2":
   version: 1.0.2
   resolution: "core-util-is@npm:1.0.2"
@@ -2490,15 +2408,6 @@ __metadata:
   version: 2.0.0
   resolution: "dasherize@npm:2.0.0"
   checksum: 3a8d57e0abffb6e63afa82431ef1fc782d01aef32610b9c5617720216e6c1b1c24d2192893b2fb1ba7e5e3e4bcec9e2cb8deaf1bd51f017cf385c82953d28240
-  languageName: node
-  linkType: hard
-
-"date-fns@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "date-fns@npm:2.30.0"
-  dependencies:
-    "@babel/runtime": ^7.21.0
-  checksum: f7be01523282e9bb06c0cd2693d34f245247a29098527d4420628966a2d9aad154bd0e90a6b1cf66d37adcb769cd108cf8a7bd49d76db0fb119af5cdd13644f4
   languageName: node
   linkType: hard
 
@@ -2679,6 +2588,34 @@ __metadata:
   dependencies:
     esutils: ^2.0.2
   checksum: fd7673ca77fe26cd5cba38d816bc72d641f500f1f9b25b83e8ce28827fe2da7ad583a8da26ab6af85f834138cf8dae9f69b0cd6ab925f52ddab1754db44d99ce
+  languageName: node
+  linkType: hard
+
+"dotenv-cli@npm:^7.4.1":
+  version: 7.4.1
+  resolution: "dotenv-cli@npm:7.4.1"
+  dependencies:
+    cross-spawn: ^7.0.3
+    dotenv: ^16.3.0
+    dotenv-expand: ^10.0.0
+    minimist: ^1.2.6
+  bin:
+    dotenv: cli.js
+  checksum: 213ed2a446db0aed329fb8792107dd3bacab409eb4904137f57f6e428e0de7abfce2e1cbf34b311ce8b36090931a316e943cf193975a2eb8e855ad7db3df8cf5
+  languageName: node
+  linkType: hard
+
+"dotenv-expand@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "dotenv-expand@npm:10.0.0"
+  checksum: 2a38b470efe0abcb1ac8490421a55e1d764dc9440fd220942bce40965074f3fb00b585f4346020cb0f0f219966ee6b4ee5023458b3e2953fe5b3214de1b314ee
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.3.0":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 301a12c3d44fd49888b74eb9ccf9f07a1f5df43f489e7fcb89647a2edcd84c42d6bc349dc8df099cd18f07c35c7b04685c1a4f3e6a6a9e6b30f8d48c15b7f49c
   languageName: node
   linkType: hard
 
@@ -3737,13 +3674,6 @@ __metadata:
   version: 1.2.3
   resolution: "functions-have-names@npm:1.2.3"
   checksum: c3f1f5ba20f4e962efb71344ce0a40722163e85bee2101ce25f88214e78182d2d2476aa85ef37950c579eb6cf6ee811c17b3101bb84004bb75655f3e33f3fdb5
-  languageName: node
-  linkType: hard
-
-"generic-pool@npm:3.9.0":
-  version: 3.9.0
-  resolution: "generic-pool@npm:3.9.0"
-  checksum: 3d89e9b2018d2e3bbf44fec78c76b2b7d56d6a484237aa9daf6ff6eedb14b0899dadd703b5d810219baab2eb28e5128fb18b29e91e602deb2eccac14492d8ca8
   languageName: node
   linkType: hard
 
@@ -6324,20 +6254,6 @@ modclean-patterns-default@latest:
   languageName: node
   linkType: hard
 
-"redis@npm:^4.6.10":
-  version: 4.6.13
-  resolution: "redis@npm:4.6.13"
-  dependencies:
-    "@redis/bloom": 1.2.0
-    "@redis/client": 1.5.14
-    "@redis/graph": 1.1.1
-    "@redis/json": 1.0.6
-    "@redis/search": 1.1.6
-    "@redis/time-series": 1.0.5
-  checksum: 10150ec30f1f89e47cec41c27dc77a99c78a0b078735de4fc9b79c2a779787d52274c64c52004af161b95b9729067671a4cfca95257719968accb30057856a09
-  languageName: node
-  linkType: hard
-
 "referrer-policy@npm:^1.1.0":
   version: 1.2.0
   resolution: "referrer-policy@npm:1.2.0"
@@ -6357,13 +6273,6 @@ modclean-patterns-default@latest:
     globalthis: ^1.0.3
     which-builtin-type: ^1.1.3
   checksum: c7176be030b89b9e55882f4da3288de5ffd187c528d79870e27d2c8a713a82b3fa058ca2d0c9da25f6d61240e2685c42d7daa32cdf3d431d8207ee1b9ed30993
-  languageName: node
-  linkType: hard
-
-"regenerator-runtime@npm:^0.14.0":
-  version: 0.14.1
-  resolution: "regenerator-runtime@npm:0.14.1"
-  checksum: 9f57c93277b5585d3c83b0cf76be47b473ae8c6d9142a46ce8b0291a04bb2cf902059f0f8445dcabb3fb7378e5fe4bb4ea1e008876343d42e46d3b484534ce38
   languageName: node
   linkType: hard
 
@@ -8273,7 +8182,7 @@ modclean-patterns-default@latest:
   languageName: node
   linkType: hard
 
-"yallist@npm:4.0.0, yallist@npm:^4.0.0":
+"yallist@npm:^4.0.0":
   version: 4.0.0
   resolution: "yallist@npm:4.0.0"
   checksum: 343617202af32df2a15a3be36a5a8c0c8545208f3d3dfbc6bb7c3e3b7e8c6f8e7485432e4f3b88da3031a6e20afa7c711eded32ddfb122896ac5d914e75848d5
