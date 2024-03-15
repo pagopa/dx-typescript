@@ -10,7 +10,6 @@ on:
         description: 'Choose your technology stack'
         options:
           - none
-          - typescript
       name:
         type: string
         required: true
@@ -47,10 +46,13 @@ jobs:
       ARM_USE_OIDC: true
       ARM_USE_AZUREAD: true
       ARM_STORAGE_USE_AZUREAD: true
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_PAT }}
+      # we assume that the template repository contains this directory  
+      TEMPLATE_INFRA_DIR: repo/infra/repository
     permissions:
       id-token: write
       contents: read
@@ -62,7 +64,7 @@ jobs:
         with:
           repository: pagopa/${{ inputs.name }}
           path: repo
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ env.GH_TOKEN }}
 
       - name: Replace placeholders
         working-directory: repo
@@ -79,27 +81,32 @@ jobs:
           git push origin main
 
       - name: Azure Login
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
-          client-id: ${{ secrets.ARM_CLIENT_ID }}
-          tenant-id: ${{ secrets.ARM_TENANT_ID }}
-          subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          client-id: ${{ env.ARM_CLIENT_ID }}
+          tenant-id: ${{ env.ARM_TENANT_ID }}
+          subscription-id: ${{ env.ARM_SUBSCRIPTION_ID }}
 
       - uses: hashicorp/setup-terraform@v3
         name: Setup Terraform
 
       - name: Terraform Init
-        working-directory: repo/infra/repository
+        working-directory: ${{env.TEMPLATE_INFRA_DIR}}
         run: |
-          terraform init -backend-config="backend.tfvars"
+          terraform init
 
       - name: Terraform Plan
-        working-directory: repo/infra/repository
+        working-directory: ${{env.TEMPLATE_INFRA_DIR}}
         run: |
-          terraform plan
+          terraform plan \
+            -lock-timeout=3000s \
+            -input=false
         
       - name: Terraform Apply
-        working-directory: repo/infra/repository
+        working-directory: ${{env.TEMPLATE_INFRA_DIR}}
         run: |
-          terraform apply --auto-approve
+          terraform apply \
+            -lock-timeout=3000s \
+            -auto-approve \
+            -input=false
  
