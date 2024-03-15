@@ -13,11 +13,6 @@ on:
         type: string
         required: false
         description: (Optional) List of environment variables to set up, in env=value format.
-      require_azure_login:
-        type: boolean
-        required: false
-        default: true
-        description: (Optional) True to log into Azure before applying Terraform configuration
       use_self_hosted_runner:
         type: boolean
         required: false
@@ -59,7 +54,6 @@ jobs:
 
       - name: Azure Login
         uses: azure/login@v2 # v2.0.0
-        if: ${{ inputs.require_azure_login == true }}
         with:
           client-id: ${{ env.ARM_CLIENT_ID }}
           tenant-id: ${{ env.ARM_TENANT_ID }}
