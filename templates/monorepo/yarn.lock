@@ -232,14 +232,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/functions@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@azure/functions@npm:3.5.1"
+"@azure/functions@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "@azure/functions@npm:4.3.0"
   dependencies:
-    iconv-lite: ^0.6.3
+    cookie: ^0.6.0
     long: ^4.0.0
-    uuid: ^8.3.0
-  checksum: f2616ae78ed57df195e7243efbc726163471b0dbe93b6e0b05410a3fe362220ce0eab93d18e218dacc51dc99e30a47bc991d451e60cf50be573a060046d5ad52
+    undici: ^5.13.0
+  checksum: ef7c6cadec2ae105cec98547ba02526ee7e99ffbb167b29c291e6d708231d0b54bbeb6c41803c2a023684989d4ba8aa0dedeaf27b645731869c5ffe37e8ecb31
   languageName: node
   linkType: hard
 
@@ -486,6 +486,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fastify/busboy@npm:^2.0.0":
+  version: 2.1.1
+  resolution: "@fastify/busboy@npm:2.1.1"
+  checksum: 42c32ef75e906c9a4809c1e1930a5ca6d4ddc8d138e1a8c8ba5ea07f997db32210617d23b2e4a85fe376316a41a1a0439fc6ff2dedf5126d96f45a9d80754fb2
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -671,7 +678,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pagopa/handler-kit-azure-func@npm:^1.2.0":
+"@pagopa/handler-kit-azure-func@npm:^1.2.1":
   version: 1.2.1
   resolution: "@pagopa/handler-kit-azure-func@npm:1.2.1"
   dependencies:
@@ -814,6 +821,13 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 6ad6a00fc4f2f2cfc6bff76fb1d88b8ee20bc0601e18ebb01b6d4be583733a860239a521a7fbca73b612e66705078809483549d2b18f370eb346c5155c8e4a0f
+  languageName: node
+  linkType: hard
+
+"@pkgr/core@npm:^0.1.0":
+  version: 0.1.1
+  resolution: "@pkgr/core@npm:0.1.1"
+  checksum: 6f25fd2e3008f259c77207ac9915b02f1628420403b2630c92a07ff963129238c9262afc9e84344c7a23b5cc1f3965e2cd17e3798219f5fd78a63d144d3cceba
   languageName: node
   linkType: hard
 
@@ -1863,10 +1877,10 @@ __metadata:
   resolution: "azure-functions-api@workspace:apps/azure-functions-api"
   dependencies:
     "@azure/cosmos": 3.17.3
-    "@azure/functions": ^3.5.1
+    "@azure/functions": ^4.3.0
     "@pagopa/eslint-config-node": "*"
     "@pagopa/handler-kit": ^1.1.0
-    "@pagopa/handler-kit-azure-func": ^1.2.0
+    "@pagopa/handler-kit-azure-func": ^1.2.1
     "@pagopa/io-functions-commons": ../../../../../io-functions-commons
     "@pagopa/openapi-codegen-ts": ^13.1.0
     "@pagopa/ts-commons": ^12.5.0
@@ -1878,13 +1892,13 @@ __metadata:
     date-fns: ^2.30.0
     dependency-check: ^4.1.0
     dotenv: ^8.2.0
-    eslint: ^8.28.0
-    eslint-plugin-prettier: ^4.0.0
+    eslint: ^8.57.0
+    eslint-plugin-prettier: ^5.1.3
     fp-ts: 2.16.2
     io-ts: 2.2.21
     modclean: ^3.0.0-beta.1
     npm-run-all: ^4.1.5
-    prettier: ^1.18.2
+    prettier: ^3.2.5
     redis: ^4.6.10
     shx: ^0.3.2
     swagger-cli: ^4.0.4
@@ -2406,6 +2420,13 @@ __metadata:
     async-listener: ^0.6.0
     emitter-listener: ^1.1.1
   checksum: 5ac1dcf354563a7121fc1653676ed8dda93565c469698dd7454c3485d9e2c3ca61347d754d02179d13d9e51665d23fffe6bf9e53e89a1865a0c5530384258c2f
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "cookie@npm:0.6.0"
+  checksum: f56a7d32a07db5458e79c726b77e3c2eff655c36792f2b6c58d351fb5f61531e5b1ab7f46987150136e366c65213cbe31729e02a3eaed630c3bf7334635fb410
   languageName: node
   linkType: hard
 
@@ -3163,6 +3184,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-prettier@npm:^5.1.3":
+  version: 5.1.3
+  resolution: "eslint-plugin-prettier@npm:5.1.3"
+  dependencies:
+    prettier-linter-helpers: ^1.0.0
+    synckit: ^0.8.6
+  peerDependencies:
+    "@types/eslint": ">=8.0.0"
+    eslint: ">=8.0.0"
+    eslint-config-prettier: "*"
+    prettier: ">=3.0.0"
+  peerDependenciesMeta:
+    "@types/eslint":
+      optional: true
+    eslint-config-prettier:
+      optional: true
+  checksum: eb2a7d46a1887e1b93788ee8f8eb81e0b6b2a6f5a66a62bc6f375b033fc4e7ca16448da99380be800042786e76cf5c0df9c87a51a2c9b960ed47acbd7c0b9381
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react@npm:^7.29.4":
   version: 7.34.0
   resolution: "eslint-plugin-react@npm:7.34.0"
@@ -3227,7 +3268,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.12.0, eslint@npm:^8.28.0":
+"eslint@npm:^8.12.0, eslint@npm:^8.57.0":
   version: 8.57.0
   resolution: "eslint@npm:8.57.0"
   dependencies:
@@ -4120,7 +4161,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iconv-lite@npm:^0.6.2, iconv-lite@npm:^0.6.3":
+"iconv-lite@npm:^0.6.2":
   version: 0.6.3
   resolution: "iconv-lite@npm:0.6.3"
   dependencies:
@@ -6091,7 +6132,7 @@ modclean-patterns-default@latest:
   languageName: node
   linkType: hard
 
-"prettier@npm:^1.12.1, prettier@npm:^1.18.2":
+"prettier@npm:^1.12.1":
   version: 1.19.1
   resolution: "prettier@npm:1.19.1"
   bin:
@@ -6109,7 +6150,7 @@ modclean-patterns-default@latest:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.1.1":
+"prettier@npm:^3.1.1, prettier@npm:^3.2.5":
   version: 3.2.5
   resolution: "prettier@npm:3.2.5"
   bin:
@@ -7231,6 +7272,16 @@ modclean-patterns-default@latest:
   languageName: node
   linkType: hard
 
+"synckit@npm:^0.8.6":
+  version: 0.8.8
+  resolution: "synckit@npm:0.8.8"
+  dependencies:
+    "@pkgr/core": ^0.1.0
+    tslib: ^2.6.2
+  checksum: 9ed5d33abb785f5f24e2531efd53b2782ca77abf7912f734d170134552b99001915531be5a50297aa45c5701b5c9041e8762e6cd7a38e41e2461c1e7fccdedf8
+  languageName: node
+  linkType: hard
+
 "tar@npm:^6.1.11, tar@npm:^6.1.2":
   version: 6.2.0
   resolution: "tar@npm:6.2.0"
@@ -7413,7 +7464,7 @@ modclean-patterns-default@latest:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.2.0":
+"tslib@npm:^2.2.0, tslib@npm:^2.6.2":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
@@ -7719,6 +7770,15 @@ modclean-patterns-default@latest:
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
   checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
+  languageName: node
+  linkType: hard
+
+"undici@npm:^5.13.0":
+  version: 5.28.3
+  resolution: "undici@npm:5.28.3"
+  dependencies:
+    "@fastify/busboy": ^2.0.0
+  checksum: fa1e65aff896c5e2ee23637b632e306f9e3a2b32a3dc0b23ea71e5555ad350bcc25713aea894b3dccc0b7dc2c5e92a5a58435ebc2033b731a5524506f573dfd2
   languageName: node
   linkType: hard
 
