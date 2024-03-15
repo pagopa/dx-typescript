@@ -4,14 +4,14 @@ locals {
   ci_github_federations = [
     {
       repository = "dx-typescript",
-      subject = "prod-ci"
+      subject    = "prod-ci"
     }
   ]
 
   cd_github_federations = [
     {
       repository = "dx-typescript",
-      subject = "prod-cd"
+      subject    = "prod-cd"
     }
   ]
 

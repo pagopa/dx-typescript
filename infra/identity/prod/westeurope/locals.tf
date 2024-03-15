@@ -4,10 +4,10 @@ locals {
   location = "westeurope"
 
   tags = {
-    CostCenter = "TS310 - PAGAMENTI & SERVIZI"
-    CreatedBy = "Terraform"
+    CostCenter  = "TS310 - PAGAMENTI & SERVIZI"
+    CreatedBy   = "Terraform"
     Environment = "Prod"
-    Owner = "DevEx"
-    Source = "https://github.com/pagopa/dx-typescript"
+    Owner       = "DevEx"
+    Source      = "https://github.com/pagopa/dx-typescript"
   }
 }

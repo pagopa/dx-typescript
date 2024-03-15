@@ -3,12 +3,12 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = ">= 3.90.0"
+      version = ">= 3.96.0"
     }
 
     github = {
       source  = "integrations/github"
-      version = "5.45.0"
+      version = "6.1.0"
     }
   }
 

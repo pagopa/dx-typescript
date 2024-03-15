@@ -1,10 +1,10 @@
 resource "github_branch_default" "default_main" {
-  repository = local.repository
+  repository = github_repository.this.name
   branch     = "main"
 }
 
 resource "github_branch_protection" "protection_main" {
-  repository_id = local.repository
+  repository_id = github_repository.this.repo_id
   pattern       = "main"
 
   required_status_checks {
@@ -13,7 +13,7 @@ resource "github_branch_protection" "protection_main" {
   }
 
   require_conversation_resolution = true
-  require_signed_commits          = true
+  require_signed_commits          = false
 
   required_pull_request_reviews {
     dismiss_stale_reviews           = false

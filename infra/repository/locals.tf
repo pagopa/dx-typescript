@@ -3,8 +3,6 @@ locals {
 
   identity_resource_group_name = "${local.project}-identity-rg"
 
-  repository = "dx-typescript"
-
   repo_secrets = {
     "ARM_TENANT_ID"       = data.azurerm_client_config.current.tenant_id,
     "ARM_SUBSCRIPTION_ID" = data.azurerm_subscription.current.id
