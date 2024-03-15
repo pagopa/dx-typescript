@@ -15,39 +15,18 @@ import { NonEmptyString } from "@pagopa/ts-commons/lib/strings";
 import { withDefault } from "@pagopa/ts-commons/lib/types";
 import { NumberFromString } from "@pagopa/ts-commons/lib/numbers";
 
-const RedisClientConfig = t.intersection([
-  t.type({
-    REDIS_TLS_ENABLED: t.boolean,
-    REDIS_URL: NonEmptyString
-  }),
-  t.partial({
-    REDIS_PASSWORD: NonEmptyString,
-    REDIS_PORT: NonEmptyString
-  })
-]);
-export type RedisClientConfig = t.TypeOf<typeof RedisClientConfig>;
-
 export type IConfig = t.TypeOf<typeof IConfig>;
-export const IConfig = t.intersection([
-  t.interface({
-    APPINSIGHTS_INSTRUMENTATIONKEY: NonEmptyString,
+export const IConfig = t.type({
+  APPINSIGHTS_INSTRUMENTATIONKEY: NonEmptyString,
 
-    COSMOS_CONNECTION_STRING: NonEmptyString,
-    COSMOS_DB_NAME: NonEmptyString,
+  // Default is 10 sec timeout
+  FETCH_TIMEOUT_MS: withDefault(t.string, "10000").pipe(NumberFromString),
 
-    // Default is 10 sec timeout
-    FETCH_TIMEOUT_MS: withDefault(t.string, "10000").pipe(NumberFromString),
-
-    isProduction: t.boolean
-  }),
-  RedisClientConfig
-]);
+  isProduction: t.boolean
+});
 
 export const envConfig = {
   ...process.env,
-  REDIS_TLS_ENABLED:
-    process.env.REDIS_TLS_ENABLED &&
-    process.env.REDIS_TLS_ENABLED.toLowerCase() === "true",
   isProduction: process.env.NODE_ENV === "production"
 };
 
