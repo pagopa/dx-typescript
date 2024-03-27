@@ -9,6 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "@pagopa/eslint-config-node": "*",
     "@pagopa/typescript-config-node": "*",
     "prettier": "^3.1.1",
