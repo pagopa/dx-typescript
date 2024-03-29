@@ -8,6 +8,11 @@ variable "env_short" {
   description = "Environment short name"
 }
 
+variable "env" {
+  type        = string
+  description = "Environment name"
+}
+
 variable "prefix" {
   type        = string
   description = "Project prefix"

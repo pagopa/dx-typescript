@@ -1,7 +1,7 @@
 locals {
-  env_short = "p"
 
   location = "westeurope"
+  project  = "dx-p"
 
   tags = {
     CostCenter  = "TS310 - PAGAMENTI & SERVIZI"

@@ -7,11 +7,6 @@ terraform {
   }
 }
 
-provider "azurerm" {
-  features {
-  }
-}
-
 module "federated_ci_identity" {
   count = var.continuos_integration.enable == true ? 1 : 0
 
