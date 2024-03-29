@@ -6,14 +6,14 @@ locals {
     var.continuos_delivery.enable == true ? ["cd"] : [],
   )
 
-  ci_github_federations = tolist([
+  ci_github_federations = tolist(flatten([
     for env in local.github_environments : [
       for repo in var.repositories : {
         repository = repo
         subject    = "${env}-ci"
       }
     ]
-  ])
+  ]))
 
   cd_github_federations = tolist([
     for env in local.github_environments : [
