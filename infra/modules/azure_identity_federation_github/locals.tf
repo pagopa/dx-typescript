@@ -3,7 +3,7 @@ locals {
 
   ci_github_federations = tolist([
     for env in var.github_environments : [
-      for repo in var.continuos_integration.repositories : {
+      for repo in var.repositories : {
         repository = repo
         subject    = "${env}-ci"
       }
@@ -12,7 +12,7 @@ locals {
 
   cd_github_federations = tolist([
     for env in var.github_environments : [
-      for repo in var.continuos_delivery.repositories : {
+      for repo in var.repositories : {
         repository = repo
         subject    = "${env}-cd"
       }

@@ -25,13 +25,19 @@ variable "domain" {
 }
 
 variable "github_environments" {
-  type = list(string)
+  type        = list(string)
+  description = "List of GitHub environment name suffix"
+}
+
+variable "repositories" {
+  type        = list(string)
+  description = "List of repositories to federate"
 }
 
 variable "continuos_integration" {
   type = object({
-    enable       = bool
-    repositories = list(string)
+    enable = bool
+    # repositories = list(string)
     roles = object({
       subscription    = set(string)
       resource_groups = map(list(string))
@@ -42,8 +48,8 @@ variable "continuos_integration" {
 
 variable "continuos_delivery" {
   type = object({
-    enable       = bool
-    repositories = list(string)
+    enable = bool
+    # repositories = list(string)
     roles = object({
       subscription    = set(string)
       resource_groups = map(list(string))
