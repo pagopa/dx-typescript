@@ -49,11 +49,11 @@
     "@azure/functions": "4.2.0",
     "@pagopa/handler-kit": "^1.1.0",
     "@pagopa/handler-kit-azure-func": "^2.0.1",
-    "@pagopa/io-functions-commons": "../../../../../io-functions-commons",
+    "@pagopa/io-functions-commons": "^28.21.0",
     "@pagopa/openapi-codegen-ts": "^13.1.0",
-    "@pagopa/ts-commons": "^12.5.0",
+    "@pagopa/ts-commons": "^12.6.0",
     "azure-storage": "^2.10.7",
-    "fp-ts": "2.16.2",
-    "io-ts": "2.2.21"
+    "fp-ts": "^2.16.5",
+    "io-ts": "^2.2.21"
   }
 }
