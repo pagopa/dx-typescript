@@ -24,10 +24,10 @@ variable "domain" {
   description = "(Optional) Domain of the project"
 }
 
-variable "github_environments" {
-  type        = list(string)
-  description = "List of GitHub environment name suffix"
-}
+# variable "github_environments" {
+#   type        = list(string)
+#   description = "List of GitHub environment name suffix"
+# }
 
 variable "repositories" {
   type        = list(string)
