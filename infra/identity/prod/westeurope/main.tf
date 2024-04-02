@@ -29,11 +29,12 @@ resource "azurerm_resource_group" "rg_identity" {
 module "federated_identities" {
   source = "../../../modules/azure_identity_federation_github"
 
-  prefix       = "dx"
-  env_short    = "p"
-  env          = "prod"
-  repositories = ["dx-typescript"]
-  domain       = "typescript"
+  prefix    = local.prefix
+  env_short = local.env_short
+  env       = local.env
+  domain    = local.domain
+
+  repositories = [local.repo_name]
 
   continuos_integration = {
     enable = true
