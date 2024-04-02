@@ -37,6 +37,19 @@ variable "continuos_integration" {
       resource_groups = map(list(string))
     })
   })
+
+  default = {
+    enable = true
+    roles = {
+      subscription = ["Reader", "Reader and Data Access"]
+      resource_groups = {
+        terraform-state-rg = [
+          "Storage Blob Data Contributor"
+        ]
+      }
+    }
+  }
+
   description = "Continuos Integration identity properties, such as repositories to federated with and RBAC roles"
 }
 
@@ -48,5 +61,18 @@ variable "continuos_delivery" {
       resource_groups = map(list(string))
     })
   })
+
+  default = {
+    enable = true
+    roles = {
+      subscription = ["Contributor"]
+      resource_groups = {
+        terraform-state-rg = [
+          "Storage Blob Data Contributor"
+        ]
+      }
+    }
+  }
+
   description = "Continuos Delivery identity properties, such as repositories to federated with and RBAC roles"
 }

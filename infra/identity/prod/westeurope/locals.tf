@@ -2,7 +2,7 @@ locals {
   prefix    = "dx"
   env_short = "p"
   env       = "prod"
-  domain    = "dx-typescript"
+  domain    = "typescript"
   location  = "westeurope"
   project   = "${local.prefix}-${local.env_short}"
 

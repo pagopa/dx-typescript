@@ -36,36 +36,6 @@ module "federated_identities" {
 
   repositories = [local.repo_name]
 
-  continuos_integration = {
-    enable = true
-    roles = {
-      subscription = [
-        "Reader",
-        "Reader and Data Access"
-      ]
-      resource_groups = {
-        terraform-state-rg = [
-          "Storage Blob Data Contributor"
-        ]
-      }
-    }
-  }
-
-  continuos_delivery = {
-    enable = true
-    roles = {
-      subscription = [
-        "Reader",
-        "Reader and Data Access"
-      ]
-      resource_groups = {
-        terraform-state-rg = [
-          "Storage Blob Data Contributor"
-        ]
-      }
-    }
-  }
-
   tags = local.tags
 
   depends_on = [
