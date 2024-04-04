@@ -1,6 +1,6 @@
 const { resolve } = require("node:path");
 const currentDirectory =  process.cwd();
-const project = currentDirectory.includes("templates/monorepo") ? resolve(process.cwd(), "tsconfig.json") : resolve(process.cwd(), "templates/monorepo/tsconfig.json");
+const project = currentDirectory.includes("apps/azure-functions-api") ? resolve(process.cwd(), "tsconfig.json") : resolve(process.cwd(), "apps/azure-functions-api/tsconfig.json");
 module.exports = {
   "env": {
     "browser": true,

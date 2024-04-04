@@ -43,7 +43,7 @@
     "shx": "^0.3.2",
     "swagger-cli": "^4.0.4",
     "ts-jest": "^24.3.0",
-    "typescript": "4.8.4"
+    "typescript": "^5.4.3"
   },
   "dependencies": {
     "@azure/functions": "4.2.0",

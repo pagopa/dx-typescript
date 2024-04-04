@@ -8,7 +8,6 @@ import { HealthProblem } from "@pagopa/io-functions-commons/dist/src/utils/healt
 import { httpAzureFunction } from "@pagopa/handler-kit-azure-func";
 import { ApplicationInfo } from "../generated/definitions/internal/ApplicationInfo";
 import { DummyProblemSource, dummyHelthCheck } from "../utils/health-check";
-import { HealthCheckBuilder } from "../utils/health-check";
 
 type ProblemSource = DummyProblemSource;
 const applicativeValidation = RTE.getApplicativeReaderTaskValidation(
@@ -23,7 +22,7 @@ export const makeInfoHandler: H.Handler<
 > = H.of((_: H.HttpRequest) =>
   pipe(
     // TODO: Add all the function health checks
-    [dummyHelthCheck] as ReadonlyArray<HealthCheckBuilder>,
+    [dummyHelthCheck],
     RA.sequence(applicativeValidation),
     RTE.map(() => H.successJson({ name: "it works!", version: "0.0.1" })),
     RTE.mapLeft((problems) => new H.HttpError(problems.join("\n\n")))
