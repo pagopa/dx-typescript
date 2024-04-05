@@ -36,23 +36,15 @@ const errorOrConfig: t.Validation<IConfig> = IConfig.decode(envConfig);
  * Read the application configuration and check for invalid values.
  * Configuration is eagerly evalued when the application starts.
  *
- * @returns either the configuration values or a list of validation errors
+ * @returns either the configuration values or an Error
  */
-export const getConfig = (): t.Validation<IConfig> => errorOrConfig;
-
-/**
- * Read the application configuration and check for invalid values.
- * If the application is not valid, raises an exception.
- *
- * @returns the configuration values
- * @throws validation errors found while parsing the application configuration
- */
-export const getConfigOrThrow = (): IConfig =>
+export const getConfigOrError = (): E.Either<Error, IConfig> =>
   pipe(
     errorOrConfig,
-    E.getOrElseW((errors: ReadonlyArray<t.ValidationError>) => {
-      throw new Error(
-        `Invalid configuration: ${reporters.readableReportSimplified(errors)}`
-      );
-    })
+    E.mapLeft(
+      (errors: ReadonlyArray<t.ValidationError>) =>
+        new Error(
+          `Invalid configuration: ${reporters.readableReportSimplified(errors)}`
+        )
+    )
   );
