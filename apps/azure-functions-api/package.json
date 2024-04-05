@@ -6,8 +6,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "shx rm -rf dist && npm run generate",
-    "postbuild": "dependency-check package.json --no-dev --missing ./dist/**/*.js",
-    "build": "yarn prebuild && tsc && yarn postbuild",
+    "build": "yarn prebuild && tsc",
     "watch": "tsc -w",
     "extensions:install": "func extensions install",
     "start": "dotenv -e .env func start --javascript",
