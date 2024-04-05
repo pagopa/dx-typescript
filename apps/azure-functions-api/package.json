@@ -11,13 +11,11 @@
     "watch": "tsc -w",
     "extensions:install": "func extensions install",
     "start": "dotenv -e .env func start --javascript",
-    "predev": "npm-run-all build",
-    "dev": "npm-run-all --parallel start watch",
+    "dev": "yarn build && yarn start watch",
     "lint": "eslint . -c .eslintrc.js --ext .ts,.tsx --cache",
     "lint-api": "find ./api -name '*.yaml' -exec swagger-cli validate {} \\;",
     "api:bundle": "bundle-api-spec -i api/internal.yaml.template -o api/internal.yaml -V $npm_package_version",
-    "pregenerate": "npm-run-all api:bundle",
-    "generate": "yarn pregenerate && shx rm -rf ./src/generated && npm-run-all generate:definitions-internal",
+    "generate": "yarn api:bundle && shx rm -rf ./src/generated && yarn generate:definitions-internal",
     "generate:definitions-internal": "shx rm -rf ./src/generated/definitions/internal && shx mkdir -p ./src/generated/definitions/internal && gen-api-models --api-spec ./api/internal.yaml --no-strict --out-dir ./src/generated/definitions/internal "
   },
   "devDependencies": {
@@ -30,7 +28,6 @@
     "dotenv-cli": "^7.4.1",
     "eslint": "^8.57.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "shx": "^0.3.2",
     "swagger-cli": "^4.0.4",
