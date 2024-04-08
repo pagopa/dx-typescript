@@ -37,7 +37,8 @@ jobs:
         run: |
           gh repo create pagopa/${{ inputs.name }} \
             --disable-wiki \
-            --template pagopa/${{ inputs.technology }}-template
+            --template pagopa/${{ inputs.technology }}-template \
+            --public
 
   repo_setup:
     name: 'Repository setup'
