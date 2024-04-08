@@ -29,7 +29,8 @@ jobs:
         if: inputs.technology == 'none'
         run: |
           gh repo create pagopa/${{ inputs.name }} \
-            --disable-wiki
+            --disable-wiki \
+            --public
 
       - name: 'Create Repository from Template'
         if: inputs.technology != 'none'
