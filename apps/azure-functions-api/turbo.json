@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "**/.env.*local"
+  ],
+  "extends": ["//"],
+  "pipeline": {
+    "lint:api": {
+      "inputs": [
+        "api/*.yaml"
+      ],
+      "dependsOn": [
+        "api:bundle"
+      ]
+    },
+    "api:bundle": {
+      "inputs": [
+        "api/*.yaml.template"
+      ],
+      "outputs": [
+        "api/*.yaml"
+      ]
+    },
+    "clean:generate": {},
+    "generate": {},
+    "generate:definitions-internal": {
+      "inputs": [
+        "api/internal.yaml",
+        "package.json",
+        "tsconfig.json"
+      ],
+      "outputs": [
+        "src/generated/definitions/internal/**"
+      ],
+      "dependsOn": [
+        "lint:api",
+        "clean:generate"
+      ]
+    }
+  }
+}
