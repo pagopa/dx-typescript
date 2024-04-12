@@ -9,6 +9,11 @@ on:
         description: Azure region where the resources will be deployed.
         type: string
         required: true
+      tf_configuration_path:
+        description:
+        type: string
+        required: false
+        default: infra/resources
       env_vars:
         description: List of environment variables to set up, given in env=value format.
         type: string
@@ -51,10 +56,10 @@ jobs:
             echo "Both environment and region must be provided."
             exit 1
           else
-            # The directory is expected to be in the format 
+            # The directory is expected to be in the format
             #  infra/resources/${{ inputs.environment }}/${{ inputs.region }}
             # Example: infra/resources/prod/westeurope
-            echo "dir=infra/resources/${{ inputs.environment }}/${{ inputs.region }}" >> $GITHUB_OUTPUT
+            echo "dir=${{ inputs.tf_configuration_path}}/${{ inputs.environment }}/${{ inputs.region }}" >> $GITHUB_OUTPUT
           fi
 
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
