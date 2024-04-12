@@ -65,26 +65,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.node-version'
-          cache: 'yarn'
-          cache-dependency-path: "yarn.lock"
-
-      - name: Install dependencies
-        run: yarn
-
-      - name: Prune workspace
-        run: yarn turbo prune ${{ matrix.package.name }} --out ./bundle
-
-      - name: Create bundle
-        run: zip -r ${{ matrix.package.name }}-${{ matrix.package.version }}.zip ./bundle
-
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
           draft: false
-          files: ${{ matrix.package.name }}-${{ matrix.package.version }}.zip
           tag_name: ${{ matrix.package.name }}@${{ matrix.package.version }}
           generate_release_notes: true
