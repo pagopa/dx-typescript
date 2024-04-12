@@ -3,7 +3,7 @@
 Scaffold a new project using a monorepo structure.
 Each monorepo is meant to include all the published artifacts for the project as well as the infrastructure definition.
 
-## Requisites
+## Requirements
 
 - `Node.js` v20
 - `Terraform` v1.7.5
