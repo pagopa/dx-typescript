@@ -86,6 +86,10 @@ To add a dependency to a local workspace, manually edit the target workspace's `
 }
 ```
 
+### Yarn SDKS (.yarn/sdks)
+
+Smart IDEs (such as VSCode or IntelliJ) require special configuration for TypeScript to work when using Plug'n'Play installs. That configuration is generated automatically by `yarn` (via `yarn dlx @yarnpkg/sdks vscode vim [other-editor...]`) and commited to `.yarn/sdks`.
+
 ## Folder structure
 
 ### `/apps`
