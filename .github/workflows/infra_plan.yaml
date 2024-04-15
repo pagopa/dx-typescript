@@ -12,7 +12,7 @@ on:
       base_path:
         description: The base path on which the script will look for Terraform projects
         type: string
-        required: false
+        required: true
       env_vars:
         description: List of environment variables to set up, given in env=value format.
         type: string
