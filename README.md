@@ -61,6 +61,9 @@ Defined tasks are _lint_, _test_, and _typecheck_.
 
 ## Dependencies
 
+> [!IMPORTANT]  
+> This project uses Yarn Plug'n'Play as installation strategy for dependencies. [Check out](https://yarnpkg.com/features/pnp) the official Yarn documentation to lean about pnp and its difference from the classic `node_modules` approach.
+
 ```sh
 # install all dependencies for the project
 yarn
