@@ -5,8 +5,42 @@ Each monorepo is meant to include all the published artifacts for the project as
 
 ## Requirements
 
-- `Node.js` v20
-- `Terraform` v1.7.5
+This project requires specific versions of the following tools. To make sure your development setup matches with production follow the recommended installation methods.
+
+- **Node.js**
+
+  Use [nodenv](https://github.com/nodenv/nodenv) to install the [required version](.node-version) of `Node.js`.
+
+  ```sh
+  nodenv install
+  node --version
+  ```
+
+- **Yarn**
+
+  Yarn must be installed using [Corepack](https://yarnpkg.com/getting-started/install), included by default in `Node.js`.
+
+  ```sh
+  corepack enable
+  yarn --version
+  ```
+
+- **Terraform**
+
+  Use [tfenv](https://github.com/tfutils/tfenv) to install the [required version](.terraform-version) of `terraform`.
+
+  ```sh
+  tfenv install
+  terraform version
+  ```
+
+- **pre-commit**
+
+  [Follow the official documentation](https://pre-commit.com/) to install `pre-commit` in your machine.
+
+  ```sh
+  pre-commit install
+  ```
 
 ## Tasks
 
@@ -82,12 +116,12 @@ Releases are handled using [Changeset](https://github.com/changesets/changesets)
 Changeset takes care of bumping packages, updating the changelog, and tag the repository accordingly.
 
 #### How it works
-* When opening a Pull Request with a change intended to be published, [add a changeset file](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) to the proposed changes.
-* Once the Pull Request is merged, a new Pull Request named `Version Packages` will be automatically opened with all the release changes such as version bumping for each involved app or package and changelog update; if an open `Version Packages` PR already exists, it will be updated and the package versions calculated accordingly (see https://github.com/changesets/changesets/blob/main/docs/decisions.md#how-changesets-are-combined).
-Only apps and packages mentioned in the changeset files will be bumped.
-* Review the `Version Packages` PR and merge it when ready. Changeset files will be deleted.
-* A Release entry is created for each app or package whose version has been bumped.
 
+- When opening a Pull Request with a change intended to be published, [add a changeset file](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) to the proposed changes.
+- Once the Pull Request is merged, a new Pull Request named `Version Packages` will be automatically opened with all the release changes such as version bumping for each involved app or package and changelog update; if an open `Version Packages` PR already exists, it will be updated and the package versions calculated accordingly (see https://github.com/changesets/changesets/blob/main/docs/decisions.md#how-changesets-are-combined).
+  Only apps and packages mentioned in the changeset files will be bumped.
+- Review the `Version Packages` PR and merge it when ready. Changeset files will be deleted.
+- A Release entry is created for each app or package whose version has been bumped.
 
 ## Infrastructure as Code
 
