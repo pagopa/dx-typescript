@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - DEVEX-109-abbiamo-una-pipeline-di-deploy-infra
     paths:
       # Trigger the workflow when resources are modified
       - "infra/resources"
