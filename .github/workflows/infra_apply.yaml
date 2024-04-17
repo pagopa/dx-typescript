@@ -30,6 +30,10 @@ env:
   ARM_USE_AZUREAD: true
   ARM_STORAGE_USE_AZUREAD: true
 
+concurrency:
+  group: ${{ github.workflow }}-cd
+  cancel-in-progress: true
+
 jobs:
 
   tf_plan:
