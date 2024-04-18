@@ -13,20 +13,6 @@ variable "prefix" {
   description = "Project prefix"
 }
 
-variable "container_app_environment" {
-  type = object({
-    name                = string
-    resource_group_name = string
-  })
-}
-
-variable "key_vault" {
-  type = object({
-    name                = string
-    resource_group_name = string
-  })
-}
-
 variable "repo_name" {
   type = string
 }

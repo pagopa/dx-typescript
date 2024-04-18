@@ -15,8 +15,8 @@ module "container_app_job_selfhosted_runner" {
   env_short = var.env_short
 
   key_vault = {
-    resource_group_name = data.azurerm_key_vault.common.resource_group_name
-    name                = data.azurerm_key_vault.common.name
+    resource_group_name = data.azurerm_key_vault.kv.resource_group_name
+    name                = data.azurerm_key_vault.kv.name
     secret_name         = "github-runner-pat"
   }
 
