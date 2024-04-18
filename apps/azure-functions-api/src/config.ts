@@ -15,8 +15,8 @@ import { NonEmptyString } from "@pagopa/ts-commons/lib/strings";
 import { withDefault } from "@pagopa/ts-commons/lib/types";
 import { NumberFromString } from "@pagopa/ts-commons/lib/numbers";
 
-export type IConfig = t.TypeOf<typeof IConfig>;
-export const IConfig = t.type({
+export type Config = t.TypeOf<typeof Config>;
+export const Config = t.type({
   APPINSIGHTS_INSTRUMENTATIONKEY: NonEmptyString,
 
   // Default is 10 sec timeout
@@ -30,7 +30,7 @@ export const envConfig = {
   isProduction: process.env.NODE_ENV === "production"
 };
 
-const errorOrConfig: t.Validation<IConfig> = IConfig.decode(envConfig);
+const errorOrConfig: t.Validation<Config> = Config.decode(envConfig);
 
 /**
  * Read the application configuration and check for invalid values.
@@ -38,7 +38,7 @@ const errorOrConfig: t.Validation<IConfig> = IConfig.decode(envConfig);
  *
  * @returns either the configuration values or an Error
  */
-export const getConfigOrError = (): E.Either<Error, IConfig> =>
+export const getConfigOrError = (): E.Either<Error, Config> =>
   pipe(
     errorOrConfig,
     E.mapLeft(
