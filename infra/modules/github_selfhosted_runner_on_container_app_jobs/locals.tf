@@ -6,6 +6,6 @@ locals {
 
   container_app_environment = {
     name                = "${var.prefix}-${var.env_short}-github-runner-cae"
-    resource_group_name = "${var.prefix}-${var.env_short}-github-runner-cae"
+    resource_group_name = "${var.prefix}-${var.env_short}-github-runner-rg"
   }
 }
