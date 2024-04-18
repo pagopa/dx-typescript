@@ -125,11 +125,3 @@ components:
             A human readable explanation specific to this occurrence of the
             problem.
           example: There was an error processing the request
-        instance:
-          type: string
-          format: uri
-          description: >-
-            An absolute URI that identifies the specific occurrence of the
-            problem.
-
-            It may or may not yield further information if dereferenced.
