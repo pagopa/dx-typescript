@@ -10,7 +10,7 @@ import { ApplicationInfo } from "../generated/definitions/internal/ApplicationIn
 
 const applicativeValidation = RTE.getApplicativeReaderTaskValidation(
   Task.ApplicativePar,
-  RA.getSemigroup<string>()
+  RA.getSemigroup<string>(),
 );
 
 const dummyHelthCheck = (): TE.TaskEither<ReadonlyArray<string>, true> =>
@@ -26,8 +26,8 @@ export const makeInfoHandler: H.Handler<
     [dummyHelthCheck],
     RA.sequence(applicativeValidation),
     RTE.map(() => H.successJson({ name: "it works!", version: "0.0.1" })),
-    RTE.mapLeft((problems) => new H.HttpError(problems.join("\n\n")))
-  )
+    RTE.mapLeft((problems) => new H.HttpError(problems.join("\n\n"))),
+  ),
 );
 
 export const InfoFn = httpAzureFunction(makeInfoHandler);

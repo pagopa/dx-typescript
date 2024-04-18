@@ -8,7 +8,7 @@ const _config = pipe(
   getConfigOrError(),
   E.getOrElseW((error) => {
     throw error;
-  })
+  }),
 );
 
 const Info = InfoFn({});
@@ -16,5 +16,5 @@ app.http("Info", {
   authLevel: "anonymous",
   handler: Info,
   methods: ["GET"],
-  route: "info"
+  route: "info",
 });

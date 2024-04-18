@@ -22,12 +22,12 @@ export const Config = t.type({
   // Default is 10 sec timeout
   FETCH_TIMEOUT_MS: withDefault(t.string, "10000").pipe(NumberFromString),
 
-  isProduction: t.boolean
+  isProduction: t.boolean,
 });
 
 export const envConfig = {
   ...process.env,
-  isProduction: process.env.NODE_ENV === "production"
+  isProduction: process.env.NODE_ENV === "production",
 };
 
 const errorOrConfig: t.Validation<Config> = Config.decode(envConfig);
@@ -44,7 +44,7 @@ export const getConfigOrError = (): E.Either<Error, Config> =>
     E.mapLeft(
       (errors: ReadonlyArray<t.ValidationError>) =>
         new Error(
-          `Invalid configuration: ${reporters.readableReportSimplified(errors)}`
-        )
-    )
+          `Invalid configuration: ${reporters.readableReportSimplified(errors)}`,
+        ),
+    ),
   );
