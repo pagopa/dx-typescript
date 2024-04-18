@@ -75,7 +75,7 @@ jobs:
         run: |
           for i in "${{ inputs.env_vars }}"
           do
-            printf "%s\n" $i >> $GITHUB_ENV
+            printf "%s\n" "$i" >> $GITHUB_ENV
           done
 
       - name: Azure Login
