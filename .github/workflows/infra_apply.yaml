@@ -62,7 +62,7 @@ jobs:
             exit 1
           else
             # The directory is expected to be in the format
-            #  infra/resources/${{ inputs.environment }}/${{ inputs.region }}
+            #  ${inputs.base_path}/${{ inputs.environment }}/${{ inputs.region }}
             # Example: infra/resources/prod/westeurope
             echo "dir=${{ inputs.base_path}}/${{ inputs.environment }}/${{ inputs.region }}" >> $GITHUB_OUTPUT
           fi
