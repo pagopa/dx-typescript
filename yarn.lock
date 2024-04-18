@@ -2365,7 +2365,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"azure-storage@npm:^2.10.5, azure-storage@npm:^2.10.7":
+"azure-storage@npm:^2.10.5":
   version: 2.10.7
   resolution: "azure-storage@npm:2.10.7"
   dependencies:
