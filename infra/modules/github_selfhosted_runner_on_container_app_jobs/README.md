@@ -1,4 +1,4 @@
-# DX Typescript - Azure Federated Identity with Github Module
+# DX Typescript - GitHub SelfHosted Runner on Container App Job
 
 <!-- markdownlint-disable -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
