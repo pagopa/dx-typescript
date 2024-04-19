@@ -2,7 +2,6 @@
   // We extend it from here!
   "extends": "@pagopa/typescript-config-node/tsconfig.json",
   "exclude": [
-    "node_modules",
     "dist"
   ],
   "compilerOptions": {
