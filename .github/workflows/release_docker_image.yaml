@@ -1,0 +1,25 @@
+name: Release Docker Image
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+      - ready_for_review
+    paths:
+      - "apps/Dockerfile"
+      - ".github/workflows/**_docker_**.yaml"
+
+jobs:
+  release_image:
+    uses: ./.github/workflows/docker_image_build.yaml
+    name: Docker Image
+    secrets: inherit
+    with:
+      dockerfile_path: './apps/Dockerfile'
+      image_description: 'Empty image used for tests'
+      build_args: |
+        ENV_KEY=override_arg_value
