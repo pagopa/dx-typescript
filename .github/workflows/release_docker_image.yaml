@@ -23,3 +23,4 @@ jobs:
       image_description: 'Empty image used for tests'
       build_args: |
         ENV_KEY=override_arg_value
+        ENV_KEY2=override_arg_value2
