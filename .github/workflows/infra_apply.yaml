@@ -97,7 +97,7 @@ jobs:
       - name: Set Terraform Version
         id: set-terraform-version
         run: |
-          set -euo pipefail
+          set -eu
           terraform_version=$(cat .terraform-version)
           echo "terraform_version=$terraform_version" >> "$GITHUB_OUTPUT"
 
