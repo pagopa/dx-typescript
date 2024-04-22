@@ -14,7 +14,8 @@ variable "prefix" {
 }
 
 variable "repo_name" {
-  type = string
+  type        = string
+  description = "This repository name"
 }
 
 variable "container_app_environment" {
@@ -22,6 +23,7 @@ variable "container_app_environment" {
     name                = string
     resource_group_name = string
   })
+  description = "Name and resource group of the Container App Environment to use as host"
 }
 
 variable "key_vault" {
@@ -29,4 +31,11 @@ variable "key_vault" {
     name                = string
     resource_group_name = string
   })
+  description = "Name and resource group of the KeyVault holding secrets for this job"
+}
+
+variable "key_vault_secret_name" {
+  type        = string
+  default     = "github-runner-pat"
+  description = "Name of the KeyVault secret containing the GITHUB_PAT value"
 }
