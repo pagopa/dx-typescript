@@ -121,22 +121,27 @@ jobs:
           terraform plan -lock-timeout=3000s -no-color > plan_output.txt 2>&1
           PLAN_EXIT_STATUS=$?
 
+          cat plan_output.txt
+
           OUTPUT=$(grep -Ev "Refreshing state|state lock|Reading|Read" plan_output.txt | tail -c 60000)
           printf "$OUTPUT" > plan_output_multiline.txt
 
           if [ $PLAN_EXIT_STATUS -ne 0 ]; then
-            printf "result=failed" >> $GITHUB_OUTPUT
+            printf "result=fail" >> $GITHUB_OUTPUT
+          else
+            printf "result=success" >> $GITHUB_OUTPUT
           fi
 
       # Post the plan output in the PR
       # The plan output is posted in a comment in the PR
       - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         name: Post Plan on PR
-        if: success() && github.event_name == 'pull_request'
+        if: always() && github.event_name == 'pull_request'
         with:
           script: |
             const fs = require('fs');
             const output = fs.readFileSync('${{ steps.directory.outputs.dir }}/plan_output_multiline.txt', 'utf8');
+            const status = '${{ steps.plan.outputs.result }}'
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -145,7 +150,7 @@ jobs:
             const botComment = comments.find(comment => {
               return comment.user.type === 'Bot' && comment.body.includes('Terraform Plan')
             })
-            const commentBody = `#### Terraform Plan ('${{ steps.directory.outputs.dir }}') 📖
+            const commentBody = `#### 📖 Terraform Plan ('${{ steps.directory.outputs.dir }} - ${status}')
             <details>
             <summary>Terraform Plan</summary>
 
@@ -175,7 +180,7 @@ jobs:
       - name: Check Terraform Plan Result
         if: always()
         run: |
-          if [ "${{ steps.plan.outputs.result }}" == "failed" ]; then
+          if [ "${{ steps.plan.outputs.result }}" == "fail" ]; then
             echo "::error::Terraform plan failed"
             exit 1
           fi
