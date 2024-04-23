@@ -119,7 +119,7 @@ jobs:
           set -euo pipefail
 
           # echo "no output" > plan_output_multiline.txt
-          terraform plan -lock-timeout=3000s -no-color > tee plan_output.txt
+          terraform plan -lock-timeout=3000s -no-color >> tee plan_output.txt
           PLAN_EXIT_STATUS=$?
 
           OUTPUT=$(grep -Ev "Refreshing state|state lock|Reading|Read" plan_output.txt | tail -c 60000)
@@ -133,7 +133,7 @@ jobs:
       # The plan output is posted in a comment in the PR
       - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         name: Post Plan on PR
-        if: github.event_name == 'pull_request' && always()
+        if: github.event_name == 'pull_request'
         with:
           script: |
             const fs = require('fs');
