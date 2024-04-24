@@ -1,5 +1,5 @@
 locals {
-  prefix    = "dxt"
+  prefix    = "dx"
   env_short = "p"
   env       = "prod"
   location  = "westeurope"
