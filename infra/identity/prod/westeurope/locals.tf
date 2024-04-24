@@ -4,6 +4,7 @@ locals {
   env       = "prod"
   location  = "westeurope"
   project   = "${local.prefix}-${local.env_short}"
+  domain    = "typescript"
 
   repo_name = "dx-typescript"
 
