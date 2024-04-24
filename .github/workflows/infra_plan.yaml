@@ -124,14 +124,17 @@ jobs:
           # RESULT=$?
           # echo "result is: $RESULT"
 
-          # cat plan_output.txt
+          echo "cat"
+          cat plan_output.txt
+          echo "finish cat"
 
           OUTPUT=$(grep -Ev "Refreshing state|state lock|Reading|Read" plan_output.txt | tail -c 60000)
           printf "$OUTPUT" > plan_output_multiline.txt
 
           # if [ "$OUTPUT" == *"error"* ]; then
-          if grep -q "Error: Terraform exited with code" plan_output.txt; then
+          if grep -q "Error: Terraform exited with code" plan_output.txt || grep -q "Error: Terraform exited with code" >&2; then
             # printf "result=fail" >> $GITHUB_OUTPUT
+            echo "failed"
             exit 1
           # else
             # printf "result=success" >> $GITHUB_OUTPUT
