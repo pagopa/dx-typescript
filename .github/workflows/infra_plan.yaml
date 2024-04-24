@@ -128,6 +128,8 @@ jobs:
           OUTPUT=$(grep -Ev "Refreshing state|state lock|Reading|Read" plan_output.txt | tail -c 60000)
           printf "$OUTPUT" > plan_output_multiline.txt
 
+          echo "result is: $RESULT"
+
           if [ $RESULT -ne 0 ]; then
             printf "result=fail" >> $GITHUB_OUTPUT
           else
