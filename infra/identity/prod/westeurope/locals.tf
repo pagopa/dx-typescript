@@ -1,9 +1,10 @@
 locals {
-  prefix    = "dxt"
+  prefix    = "dx"
   env_short = "p"
   env       = "prod"
   location  = "westeurope"
   project   = "${local.prefix}-${local.env_short}"
+  domain    = "typescript"
 
   repo_name = "dx-typescript"
 
