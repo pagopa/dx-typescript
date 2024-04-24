@@ -116,23 +116,23 @@ jobs:
         id: plan
         working-directory: ${{ steps.directory.outputs.dir }}
         run: |
-          set -euo pipefail
+          # set -euo pipefail
 
-          printf "result=fail" >> $GITHUB_OUTPUT
+          # printf "result=fail" >> $GITHUB_OUTPUT
 
           terraform plan -lock-timeout=3000s -no-color > plan_output.txt 2>&1
-          # PLAN_EXIT_STATUS=$?
+          PLAN_EXIT_STATUS=$?
 
           cat plan_output.txt
 
           OUTPUT=$(grep -Ev "Refreshing state|state lock|Reading|Read" plan_output.txt | tail -c 60000)
           printf "$OUTPUT" > plan_output_multiline.txt
 
-          # if [ $PLAN_EXIT_STATUS -ne 0 ]; then
-          #   printf "result=fail" >> $GITHUB_OUTPUT
-          # else
+          if [ $PLAN_EXIT_STATUS -ne 0 ]; then
+            printf "result=fail" >> $GITHUB_OUTPUT
+          else
             printf "result=success" >> $GITHUB_OUTPUT
-          # fi
+          fi
 
       # Post the plan output in the PR
       # The plan output is posted in a comment in the PR
