@@ -187,7 +187,7 @@ jobs:
 
       # Fail the workflow if the Terraform plan failed
       - name: Check Terraform Plan Result
-        # if: steps.plan.outcome != 'success'
+        if: always() && steps.plan.outcome != 'success'
         run: |
           echo '${{steps.plan.outcome}}''
           # if [ "${{ steps.plan.outputs.result }}" -ne "success" ]; then
