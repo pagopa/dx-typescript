@@ -132,7 +132,6 @@ jobs:
           # if [ "$OUTPUT" == *"error"* ]; then
           if grep -q "Error: Terraform exited with code" plan_output.txt; then
             # printf "result=fail" >> $GITHUB_OUTPUT
-            echo "failed"
             exit 1
           # else
             # printf "result=success" >> $GITHUB_OUTPUT
