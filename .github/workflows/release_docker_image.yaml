@@ -5,7 +5,7 @@ on:
 
 jobs:
   release_image:
-    uses: pagopa/dx/.github/workflows/docker_image_build.yaml@DEVEX-38-produrre-una-pipeline-per-la-pubblicazione-di-unimmagine-container-sul-registry
+    uses: pagopa/dx/.github/workflows/docker_image_build.yaml@main
     name: Docker Image
     secrets: inherit
     with:
