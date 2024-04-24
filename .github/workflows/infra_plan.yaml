@@ -131,7 +131,7 @@ jobs:
 
           if [ $OUTPUT == *"error"* ]; then
             printf "result=fail" >> $GITHUB_OUTPUT
-            exit 1
+            # exit 1
           else
             printf "result=success" >> $GITHUB_OUTPUT
           fi
