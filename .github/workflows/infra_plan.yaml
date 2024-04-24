@@ -116,22 +116,22 @@ jobs:
         id: plan
         working-directory: ${{ steps.directory.outputs.dir }}
         run: |
-          # set -e
+          set -euo
 
           # printf "result=fail" >> $GITHUB_OUTPUT
 
-          terraform plan -lock-timeout=3000s -no-color > plan_output.txt 2>&1
-          RESULT=$?
-          echo "result is: $RESULT"
+          terraform plan -lock-timeout=3000s -no-color | tee plan_output.txt
+          # RESULT=$?
+          # echo "result is: $RESULT"
 
-          cat plan_output.txt
+          # cat plan_output.txt
 
           OUTPUT=$(grep -Ev "Refreshing state|state lock|Reading|Read" plan_output.txt | tail -c 60000)
           printf "$OUTPUT" > plan_output_multiline.txt
 
-          if [ $RESULT -ne 0 ]; then
+          if [ $OUTPUT == *"error"* ]; then
             printf "result=fail" >> $GITHUB_OUTPUT
-            exit $RESULT
+            exit 1
           else
             printf "result=success" >> $GITHUB_OUTPUT
           fi
@@ -146,7 +146,7 @@ jobs:
           script: |
             const fs = require('fs');
             const output = fs.readFileSync('${{ steps.directory.outputs.dir }}/plan_output_multiline.txt', 'utf8');
-            const status = '${{ steps.plan.outputs.result }}'
+            const status = '${{ steps.plan.outcome }}'
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
