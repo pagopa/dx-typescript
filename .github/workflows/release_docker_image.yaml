@@ -11,11 +11,11 @@ on:
       - ready_for_review
     paths:
       - "apps/Dockerfile"
-      - ".github/workflows/**_docker_**.yaml"
+      - ".github/workflows/release_docker_image.yaml"
 
 jobs:
   release_image:
-    uses: ./.github/workflows/docker_image_build.yaml
+    uses: pagopa/dx/.github/workflows/docker_image_build.yaml@DEVEX-38-produrre-una-pipeline-per-la-pubblicazione-di-unimmagine-container-sul-registry
     name: Docker Image
     secrets: inherit
     with:
