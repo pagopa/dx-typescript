@@ -132,7 +132,7 @@ jobs:
           printf "$OUTPUT" > plan_output_multiline.txt
 
           # if [ "$OUTPUT" == *"error"* ]; then
-          if grep -q "::error::Terraform exited with code" plan_output.txt || grep -q "::error::Terraform exited with code" >&2; then
+          if grep -q "::error::Terraform exited with code" plan_output.txt; then
             # printf "result=fail" >> $GITHUB_OUTPUT
             echo "failed"
             exit 1
