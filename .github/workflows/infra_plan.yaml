@@ -120,7 +120,7 @@ jobs:
 
           # printf "result=fail" >> $GITHUB_OUTPUT
 
-          terraform plan -lock-timeout=3000s -no-color | tee plan_output.txt
+          terraform plan -lock-timeout=3000s -no-color 2>&1 | tee plan_output.txt
           # RESULT=$?
           # echo "result is: $RESULT"
 
@@ -129,11 +129,12 @@ jobs:
           OUTPUT=$(grep -Ev "Refreshing state|state lock|Reading|Read" plan_output.txt | tail -c 60000)
           printf "$OUTPUT" > plan_output_multiline.txt
 
-          if [ "$OUTPUT" == *"error"* ]; then
-            printf "result=fail" >> $GITHUB_OUTPUT
-            # exit 1
-          else
-            printf "result=success" >> $GITHUB_OUTPUT
+          # if [ "$OUTPUT" == *"error"* ]; then
+          if grep -q "Error: Terraform exited with code" plan_output.txt; then
+            # printf "result=fail" >> $GITHUB_OUTPUT
+            exit 1
+          # else
+            # printf "result=success" >> $GITHUB_OUTPUT
           fi
 
       # Post the plan output in the PR
