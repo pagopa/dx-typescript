@@ -116,7 +116,7 @@ jobs:
         id: plan
         working-directory: ${{ steps.directory.outputs.dir }}
         run: |
-          set -euo
+          # set -euo
 
           # printf "result=fail" >> $GITHUB_OUTPUT
 
