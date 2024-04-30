@@ -10,7 +10,8 @@
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "version": "changeset version",
-    "release": "changeset tag"
+    "release": "changeset tag",
+    "generate": "turbo run generate"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
