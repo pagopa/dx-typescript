@@ -705,9 +705,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pagopa/openapi-codegen-ts@npm:^13.1.0":
-  version: 13.1.0
-  resolution: "@pagopa/openapi-codegen-ts@npm:13.1.0"
+"@pagopa/openapi-codegen-ts@npm:^13.2.0":
+  version: 13.2.0
+  resolution: "@pagopa/openapi-codegen-ts@npm:13.2.0"
   dependencies:
     "@pagopa/ts-commons": "npm:^10.15.0"
     fs-extra: "npm:^6.0.0"
@@ -718,11 +718,14 @@ __metadata:
     swagger-parser: "npm:^10.0.3"
     write-yaml-file: "npm:^4.1.3"
     yargs: "npm:^15.0.1"
+  peerDependencies:
+    fp-ts: ^2.16.5
+    io-ts: ^2.2.21
   bin:
     bundle-api-spec: dist/commands/bundle-api-spec/cli.js
     gen-api-models: dist/commands/gen-api-models/cli.js
     gen-api-sdk: dist/commands/gen-api-sdk/cli.js
-  checksum: 10c0/db4755f0a08c05c8e2519138805ed7ab222a4987be62294252e3e7999c9849738f3b2806f8868807bfb6baad89c6cb158cc07fbb34228de0336aba9d0fb50989
+  checksum: 10c0/c22a0860fe3d878cb75b738e7a763ea13ffbd58371ce783fd3ef1ab401227f4a05bb82dd403deaa5ed480b97cb10d904357f7b2b27c69181a26df83101b8ee44
   languageName: node
   linkType: hard
 
@@ -1249,7 +1252,7 @@ __metadata:
     "@azure/functions": "npm:4.2.0"
     "@pagopa/handler-kit": "npm:^1.1.0"
     "@pagopa/handler-kit-azure-func": "npm:^2.0.1"
-    "@pagopa/openapi-codegen-ts": "npm:^13.1.0"
+    "@pagopa/openapi-codegen-ts": "npm:^13.2.0"
     "@pagopa/ts-commons": "npm:^12.6.0"
     "@pagopa/typescript-config-node": "npm:*"
     "@types/express": "npm:^4.17.12"
