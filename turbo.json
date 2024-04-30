@@ -82,17 +82,7 @@
       "inputs": [
         "api/*.yaml"
       ],
-      "dependsOn": [
-        "api:bundle"
-      ]
-    },
-    "api:bundle": {
-      "inputs": [
-        "api/*.yaml.template"
-      ],
-      "outputs": [
-        "api/*.yaml"
-      ]
+      "dependsOn": []
     },
     "clean:generate": {}
   }
