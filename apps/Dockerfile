@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu@sha256:e3f92abc0967a6c19d0dfa2d55838833e947b9d74edbcb0113e48535ad4be12a
 
 ARG ENV_KEY=default_value
 
