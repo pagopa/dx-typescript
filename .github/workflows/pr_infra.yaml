@@ -5,13 +5,12 @@ on:
   pull_request:
     types:
       - opened
-      - edited
       - synchronize
       - reopened
       - ready_for_review
     paths:
       # Trigger the workflow when resources are modified
-      - "infra/resources"
+      - "infra/resources/**"
       # Trigger the workflow when the involved workflows are modified
       - ".github/workflows/pr_infra.yaml"
       - ".github/workflows/templates/infra_**"
