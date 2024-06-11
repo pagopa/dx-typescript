@@ -7,7 +7,7 @@ info:
   description: |
     Documentation of the Function API here.
 servers:
-  - url: https://{function-instance-name}.azurewebsites.net
+  - url: https://${host}
 paths:
   /info:
     get:
