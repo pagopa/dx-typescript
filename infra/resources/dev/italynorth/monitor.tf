@@ -1,6 +1,6 @@
 # Log Analytics workspace
 resource "azurerm_log_analytics_workspace" "log_analytics_workspace" {
-  name                = format("%s-law-common", local.project)
+  name                = format("%s-common-log-01", local.project)
   location            = azurerm_resource_group.rg_common.location
   resource_group_name = azurerm_resource_group.rg_common.name
   sku                 = "Free"
@@ -12,7 +12,7 @@ resource "azurerm_log_analytics_workspace" "log_analytics_workspace" {
 
 # Application insights
 resource "azurerm_application_insights" "application_insights" {
-  name                = format("%s-ai-common", local.project)
+  name                = format("%s-common-appi-01", local.project)
   location            = azurerm_resource_group.rg_common.location
   resource_group_name = azurerm_resource_group.rg_common.name
   disable_ip_masking  = true
@@ -30,8 +30,8 @@ data "azurerm_key_vault_secret" "alert_quarantine_error_notification_slack" {
 
 resource "azurerm_monitor_action_group" "quarantine_error_action_group" {
   resource_group_name = azurerm_resource_group.rg_common.name
-  name                = replace(format("%s-quarantineerror", local.project), "-", "")
-  short_name          = replace(format("%s-qerr", local.project), "-", "")
+  name                = replace(format("%s-quarantine-ag-01", local.project), "-", "")
+  short_name          = replace(format("%s-qerr-ag", local.project), "-", "")
 
   email_receiver {
     name                    = "slack"

@@ -1,10 +1,10 @@
 locals {
   env_short = "d"
   prefix    = "dx"
-  project   = "${local.prefix}-${local.env_short}"
-  project_compact = "${local.prefix}${local.env_short}"
-
+  location_short = "itn"
   location = "italynorth"
+
+  project   = "${local.prefix}-${local.env_short}-${local.location_short}"
 
   tags = {
     CostCenter  = "TS310 - PAGAMENTI & SERVIZI"

@@ -24,7 +24,7 @@ data "azurerm_key_vault_secret" "apim_publisher_email" {
 # APIM subnet
 module "apim_snet" {
   source               = "git::https://github.com/pagopa/terraform-azurerm-v3.git//subnet?ref=v8.21.0"
-  name                 = "apimapi"
+  name                 = format("%s-apim-snet-01", local.project)
   resource_group_name  = azurerm_resource_group.rg_common.name
   virtual_network_name = module.vnet_common.name
   address_prefixes     = ["10.0.1.0/24"]
@@ -37,7 +37,7 @@ module "apim_snet" {
 }
 
 resource "azurerm_network_security_group" "nsg_apim" {
-  name                = format("%s-apim-nsg", local.project)
+  name                = format("%s-apim-nsg-01", local.project)
   resource_group_name = azurerm_resource_group.rg_common.name
   location            = azurerm_resource_group.rg_common.location
 
@@ -62,7 +62,7 @@ resource "azurerm_subnet_network_security_group_association" "snet_nsg" {
 }
 
 resource "azurerm_public_ip" "public_ip_apim" {
-  name                = format("%s-apim-public-ip", local.project)
+  name                = format("%s-apim-pip-01", local.project)  
   resource_group_name = azurerm_resource_group.rg_common.name
   location            = azurerm_resource_group.rg_common.location
   allocation_method   = "Static"
@@ -81,7 +81,7 @@ module "apim_dx" {
 
   subnet_id                 = module.apim_snet.id
   location                  = azurerm_resource_group.rg_common.location
-  name                      = format("%s-apim-api", local.project)
+  name                      = format("%s-apim-01", local.project)
   resource_group_name       = azurerm_resource_group.rg_common.name
   publisher_name            = "DX"
   publisher_email           = data.azurerm_key_vault_secret.apim_publisher_email.value

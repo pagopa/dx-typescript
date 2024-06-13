@@ -1,7 +1,7 @@
 module "apim_product_example_api" {
   source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//api_management_product?ref=v8.21.0"
 
-  product_id            = format("%s-api-example-api", local.prefix)
+  product_id            = format("%s-example-apimp-01", local.prefix)
   api_management_name   = module.apim_dx.name
   resource_group_name   = module.apim_dx.resource_group_name
   display_name          = "DX EXAMPLE API"
@@ -16,7 +16,7 @@ module "apim_product_example_api" {
 module "api_func_api" {
   source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//api_management_api?ref=v8.21.0"
 
-  name                = format("%s-api-func-api", local.prefix)
+  name                = format("%s-func-apimapi-01", local.prefix)
   api_management_name = module.apim_dx.name
   resource_group_name = module.apim_dx.resource_group_name
   revision            = "1"

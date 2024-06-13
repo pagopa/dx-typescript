@@ -1,6 +1,6 @@
 module "vnet_common" {
   source              = "git::https://github.com/pagopa/terraform-azurerm-v3.git//virtual_network?ref=v8.21.0"
-  name                = "${local.project}-vnet-common"
+  name                = format("%s-common-vnet-01", local.project)
   location            = azurerm_resource_group.rg_common.location
   resource_group_name = azurerm_resource_group.rg_common.name
   address_space       = ["10.0.0.0/16"]
