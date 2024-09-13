@@ -60,7 +60,7 @@ The following table contains the required ENV variables that the applicative req
 To execute locally the function copy the configuration from the `env.example` file with:
 
 ```bash
-cp env.enxample .env
+cp env.example .env
 ```
 
 Then you can start the function using the following command:
