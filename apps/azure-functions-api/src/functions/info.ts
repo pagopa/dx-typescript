@@ -13,7 +13,7 @@ const applicativeValidation = RTE.getApplicativeReaderTaskValidation(
   RA.getSemigroup<string>(),
 );
 
-const dummyHelthCheck = (): TE.TaskEither<ReadonlyArray<string>, true> =>
+const dummyHealthCheck = (): TE.TaskEither<ReadonlyArray<string>, true> =>
   TE.of(true);
 
 export const makeInfoHandler: H.Handler<
@@ -23,7 +23,7 @@ export const makeInfoHandler: H.Handler<
 > = H.of((_: H.HttpRequest) =>
   pipe(
     // TODO: Add all the function health checks
-    [dummyHelthCheck],
+    [dummyHealthCheck],
     RA.sequence(applicativeValidation),
     RTE.map(() => H.successJson({ name: "it works!", version: "0.0.1" })),
     RTE.mapLeft((problems) => new H.HttpError(problems.join("\n\n"))),
