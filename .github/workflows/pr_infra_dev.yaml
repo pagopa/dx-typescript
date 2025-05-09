@@ -5,22 +5,26 @@ on:
   pull_request:
     types:
       - opened
+      - edited
       - synchronize
       - reopened
       - ready_for_review
     paths:
       # Trigger the workflow when resources are modified
-      - "infra/resources/prod/westeurope/**"
+      - "infra/resources/dev/italynorth/**"
       # Trigger the workflow when the involved workflows are modified
-      - ".github/workflows/pr_infra.yaml"
+      - ".github/workflows/pr_infra_dev.yaml"
       - ".github/workflows/templates/infra_**"
 
 jobs:
   code_review_prod:
     uses: pagopa/dx/.github/workflows/infra_plan.yaml@main
     name: Code Review Infrastructure Plan
-    secrets: inherit
+    secrets:
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_DEV_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
     with:
-      environment: prod
-      region: westeurope
+      environment: dev
+      region: italynorth
       base_path: infra/resources
