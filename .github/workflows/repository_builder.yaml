@@ -5,34 +5,32 @@ on:
     inputs:
       technology:
         type: choice
-        default: 'none'
+        default: "none"
         required: true
-        description: 'Choose your technology stack'
+        description: "Choose your technology stack"
         options:
           - none
       name:
         type: string
         required: true
-        description: 'New repository name'
+        description: "New repository name"
 
 jobs:
-
   builder:
-    name: 'Builder'
+    name: "Builder"
     runs-on: ubuntu-20.04
     env:
       GH_TOKEN: ${{ secrets.GH_PAT }}
 
     steps:
-
-      - name: 'Create Blank Repository'
+      - name: "Create Blank Repository"
         if: inputs.technology == 'none'
         run: |
           gh repo create pagopa/${{ inputs.name }} \
             --disable-wiki \
             --public
 
-      - name: 'Create Repository from Template'
+      - name: "Create Repository from Template"
         if: inputs.technology != 'none'
         run: |
           gh repo create pagopa/${{ inputs.name }} \
@@ -41,7 +39,7 @@ jobs:
             --public
 
   repo_setup:
-    name: 'Repository setup'
+    name: "Repository setup"
     runs-on: ubuntu-20.04
     needs: [builder]
     if: inputs.technology != 'none'
@@ -62,7 +60,6 @@ jobs:
       contents: read
 
     steps:
-
       - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
         name: Checkout new repo
         with:
