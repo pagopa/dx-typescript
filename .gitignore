@@ -2,25 +2,15 @@
 **/.terraform/*
 *.tfstate
 *.tfstate.*
-crash.log
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+*.DS_Store
 **/modules/**/.terraform.lock.hcl
 **/_modules/**/.terraform.lock.hcl
 
-*.DS_Store
-*.log
-*.h2.db
-__TMP
-.metals/
-__azurite_*
-/.idea
-.bastianhost.ini
-
-# Dependencies
-node_modules
+# yarn
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -29,33 +19,123 @@ node_modules
 !.yarn/sdks
 !.yarn/versions
 
-# Local env files
+# azure
+local.settings.json
+
+dist
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Testing
-coverage
-
-# Turbo
+node_modules
 .turbo
 
-# Vercel
-.vercel
+# vitest
+coverage
+vite.config.*.timestamp-*
 
-# Build Outputs
-.next/
-out/
-build
+# old repo build
+obj
+csx
+.vs
+edge
+Publish
+
+*.user
+*.suo
+*.cscfg
+*.Cache
+project.lock.json
+
+/TestResults
+
+/tools/NuGet.exe
+/App_Data
+/secrets
+/data
+.secrets
+appsettings.json
+local.settings.json
+
+node_modules
 dist
 
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Local python packages
+.python_packages/
 
-# Misc
-.DS_Store
-*.pem
+# Python Environments
+.env
+.venv
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+coverage
+
+yarn-error.log
+
+generated
+*.zip
+
+# ESLint files
+!.eslintrc.js
+!eslint.config.js
+.eslintcache
+
+azure-functions-core-tools
+
+helm/charts**
+helm/charts/*
+
+docker-compose.override.yml
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+# Ignore any .tfvars files that are generated automatically for each Terraform run. Most
+# .tfvars files are managed as part of configuration and so should be included in
+# version control.
+#
+# example.tfvars
+
+# Ignore override files as they are usually used to override resources locally and so
+# are not checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Include override files you do wish to add to version control using negated pattern
+#
+# !example_override.tf
+
+# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
+# example: *tfplan*
+
+**/.tfsec/*
+**/.ignore/*
+
+*.DS_Store
+*.log
+*.h2.db
+__TMP
+.metals/
+*.log
+*.h2.db
+__TMP
+.metals/
+__azurite_*
+/.idea
+
+**/modules/**/.terraform.lock.hcl
