@@ -1,89 +1,52 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [
-    "**/.env.*local"
-  ],
-  "pipeline": {
+  "tasks": {
     "build": {
-      "inputs": [
-        "src/**/*.ts",
-        "package.json",
-        "tsconfig.json"
-      ],
-      "outputs": [
-        "dist/**"
-      ],
-      "dependsOn": [
-        "^generate",
-        "generate",
-        "^build"
-      ]
+      "dependsOn": ["^build", "^typecheck"],
+      "inputs": ["src/**/*.ts"],
+      "outputs": ["dist/**"],
+      "outputLogs": "errors-only"
     },
-    "typecheck": {
-      "inputs": [
-        "src/**/*.ts",
-        "package.json",
-        "tsconfig.json"
-      ],
-      "outputs": [],
-      "dependsOn": [
-        "^build",
-        "^typecheck"
-      ]
-    },
-    "format": {},
-    "format:check": {},
     "lint": {
-      "inputs": [
-        "src/**/*.ts"
-      ]
+      "inputs": ["src/**/*.ts"],
+      "outputLogs": "errors-only"
     },
     "lint:check": {
-      "inputs": [
-        "src/**/*.ts"
-      ]
+      "inputs": ["src/**/*.ts"],
+      "outputLogs": "errors-only"
     },
     "test": {
-      "inputs": [
-        "src/**/*.ts"
-      ],
-      "outputMode": "errors-only",
-      "dependsOn": [
-        "^test",
-        "^build"
-      ]
+      "dependsOn": ["^test"],
+      "inputs": ["src/**/*.spec.ts"],
+      "outputLogs": "errors-only"
     },
     "test:coverage": {
-      "inputs": [
-        "src/**/*.ts"
-      ],
-      "outputMode": "errors-only",
-      "dependsOn": [
-        "^test",
-        "^build"
-      ]
+      "dependsOn": ["^test", "build"],
+      "inputs": ["src/**/*.spec.ts"],
+      "outputLogs": "full"
     },
-    "generate": {},
-    "generate:definitions-internal": {
-      "inputs": [
-        "api/internal.yaml",
-        "package.json",
-        "tsconfig.json"
-      ],
-      "outputs": [
-        "src/generated/definitions/internal/**"
-      ],
-      "dependsOn": [
-        "lint:api",
-        "clean:generate"
-      ]
+    "format": {
+      "outputLogs": "errors-only"
     },
-    "lint:api": {
-      "inputs": [
-        "api/*.yaml"
-      ],
-      "dependsOn": []
+    "format:check": {
+      "outputLogs": "errors-only"
     },
-    "clean:generate": {}
+    "typecheck": {
+      "dependsOn": ["^build", "generate"],
+      "inputs": ["src/**/*.ts"],
+      "outputLogs": "errors-only"
+    },
+    "generate": {
+      "outputs": ["src/generated/**"]
+    },
+    "//#test:coverage": {
+      "dependsOn": ["^generate"],
+      "inputs": ["apps/**/src/**/*.ts", "packages/**/src/**/*.ts"],
+      "outputs": ["coverage"],
+      "outputLogs": "errors-only"
+    },
+    "//#format:check": {
+      "outputLogs": "errors-only"
+    }
   }
 }
