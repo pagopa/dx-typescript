@@ -32,7 +32,7 @@ If you use a code editor that doesn't support Dev Container, you can still run i
 
 ### Using local machine
 
-This project use specific versions of `node`, `yarn` and `terraform`. To make sure your development setup matches with production follow the recommended installation methods.
+This project uses specific versions of `node`, `yarn` and `terraform`. To make sure your development setup matches with production follow the recommended installation methods.
 
 1. Install and configure the following tools in your machine
 
