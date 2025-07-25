@@ -45,7 +45,7 @@ This project uses specific versions of `node`, `yarn` and `terraform`. To make s
 2. Install `node` at the right version used by this project
 
    ```bash
-    cd path/to/io-messages
+    cd path/to/project
     nodenv install
    ```
 
