@@ -90,7 +90,7 @@ yarn turbo build
 
 # to execute COMMAND on WORKSPACE_NAME
 yarn workspace WORKSPACE_NAME run command
-# to execute COMMAD on all workspaces
+# to execute COMMAND on all workspaces
 yarn workspace foreach run command
 
 # run unit tests on citizen-func
