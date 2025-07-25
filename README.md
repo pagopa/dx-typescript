@@ -3,92 +3,117 @@
 Scaffold a new project using a monorepo structure.
 Each monorepo is meant to include all the published artifacts for the project as well as the infrastructure definition.
 
-## Requirements
+## Getting Started
 
-This project requires specific versions of the following tools. To make sure your development setup matches with production follow the recommended installation methods.
+### Using Devcontainer
 
-- **Node.js**
+The preferred way to setup your development environment is to use [Devcontainer](https://containers.dev) ([Host system requirements](https://code.visualstudio.com/docs/devcontainers/containers#_system-requirements)).
 
-  Use [nodenv](https://github.com/nodenv/nodenv) to install the [required version](.node-version) of `Node.js`.
+> [!TIP]
+> If you are on macOS we recommend using [Rancher Desktop](https://rancherdesktop.io/) configured to use `VZ` as _Virtual Machine Type_ and `virtiofs` as volume _Mount Type_.
 
-  ```sh
-  nodenv install
-  node --version
-  ```
+#### Visual Studio Code
 
-- **Yarn**
+1. Make sure `docker` is available and running in your host system
+2. Install the [Devcontainer Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+3. Open the project root folder and select `Dev Containers: Reopen in Container` from the command palette
+4. Visual Studio Code will build the devcontainer image and then open the project inside the container, with all the needed tools and extension configured
 
-  Yarn must be installed using [Corepack](https://yarnpkg.com/getting-started/install), included by default in `Node.js`.
+#### Console
 
-  ```sh
-  corepack enable
-  yarn --version
-  ```
+If you use a code editor that doesn't support Dev Container, you can still run it in your terminal.
 
-- **Terraform**
+1. Follow the instruction of the following chapter ("Using local machine") to setup your local environment
+2. Run devcontainer from your terminal
+   ```bash
+   yarn devcontainer up --workspace-folder .
+   yarn devcontainer exec -- workspace-folder . /bin/bash
+   ```
 
-  Use [tfenv](https://github.com/tfutils/tfenv) to install the [required version](.terraform-version) of `terraform`.
+### Using local machine
 
-  ```sh
-  tfenv install
-  terraform version
-  ```
+This project uses specific versions of `node`, `yarn` and `terraform`. To make sure your development setup matches with production follow the recommended installation methods.
 
-- **pre-commit**
+1. Install and configure the following tools in your machine
 
-  [Follow the official documentation](https://pre-commit.com/) to install `pre-commit` in your machine.
+   - [nodenv](https://github.com/nodenv/nodenv) - Node version manager
+   - [tfenv](https://github.com/tfutils/tfenv) - Terraform version manager
+   - [terraform-docs](https://terraform-docs.io/user-guide/installation/) - Generate Terraform modules documentation in various formats
+   - [tflint](https://github.com/terraform-linters/tflint) - A Pluggable Terraform Linter
+   - [pre-commit](https://pre-commit.com/) - A framework for managing and maintaining multi-language pre-commit hooks
 
-  ```sh
-  pre-commit install
-  ```
+2. Install `node` at the right version used by this project
 
-## Tasks
+   ```bash
+    cd path/to/project
+    nodenv install
+   ```
 
-Tasks are defined in the `turbo.json` and `package.json` files. To execute a task, just run the command at the project root:
+3. Install `yarn` using [corepack](https://nodejs.org/api/corepack.html) (Node Package Manager version manager, it is distributed with `node`). This step will also install all the required dependencies
 
-```sh
-yarn <cmd>
+> [!IMPORTANT]
+> Yarn uses Plug and Play for dependency management. For more information, see: [Yarn Plug’n’Play](https://yarnpkg.com/features/pnp)
+
+   ```bash
+   corepack enable
+   yarn
+   ```
+
+4. Build all the workspaces contained by this repo
+   ```bash
+   yarn build
+   ```
+
+## Release management
+
+We use [changesets](https://github.com/changesets/changesets) to automate package versioning and releases.
+
+Each Pull Request that includes changes that require a version bump must include a _changeset file_ that describes the introduced changes.
+
+To create a _changeset file_ run the following command and follow the instructions.
+
+```bash
+yarn changeset
 ```
 
-`Turborepo` will execute the task for all the workspaces that declare the same command in their `package.json` file; it also applies caching policies to the command according to the rules defined in `turbo.json`.
+## Useful commands
 
-To define a new task:
+This project uses `yarn` and `turbo` with workspaces to manage projects and dependencies. Here is a list of useful commands to work in this repo.
 
-- add the definition to `turbo.json` under `pipeline`;
-- add a script with the same name in `package.json` as `turbo <cmd name>`.
+### Work with workspaces
 
-Defined tasks are _lint_, _test_, and _typecheck_.
+```bash
+# build all the workspaces using turbo
+yarn build
+# or
+yarn turbo build
 
-## Dependencies
+# to execute COMMAND on WORKSPACE_NAME
+yarn workspace WORKSPACE_NAME run command
+# to execute COMMAND on all workspaces
+yarn workspace foreach run command
 
-> [!IMPORTANT]  
-> This project uses Yarn Plug'n'Play as installation strategy for dependencies. [Check out](https://yarnpkg.com/features/pnp) the official Yarn documentation to lean about pnp and its difference from the classic `node_modules` approach.
+# run unit tests on citizen-func
+yarn workspace citizen-func run test
+# or (with turbo)
+yarn turbo test -- citizen-func
 
-```sh
-# install all dependencies for the project
-yarn
-
-# install a dependency to a workspace
-#   (workspace name is the name in the package.json file)
-yarn workspace <workspace name> add <package name>
-yarn workspace <workspace name> add -D <package name>
-
-# install a dependency for the monorepo
-#   (ideally a shared dev dependency)
-yarn add -D <package name>
+# run the typecheck script on all workspaces
+yarn workspaces foreach run typecheck
 ```
 
-To add a dependency to a local workspace, manually edit the target workspace's `package.json` file adding the dependency as
+### Add dependencies
 
-```json
-"dependencies": {
-    "my-dependency-workspace": "workspace:*"
-}
+```bash
+# add a dependency to the workspace root
+yarn add turbo
+
+# add vitest as devDependency on citizen-func
+yarn workspace citizen-func add -D vitest
+
+# add zod as dependency on each workspace
+yarn workspace foreach add zod
 ```
-
-### Yarn SDKS (.yarn/sdks)
-
-Smart IDEs (such as VSCode or IntelliJ) require special configuration for TypeScript to work when using Plug'n'Play installs. That configuration is generated automatically by `yarn` (via `yarn dlx @yarnpkg/sdks vscode vim [other-editor...]`) and commited to `.yarn/sdks`.
 
 ## Folder structure
 
