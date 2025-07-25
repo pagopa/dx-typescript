@@ -34,7 +34,7 @@ If you use a code editor that doesn't support Dev Container, you can still run i
 
 This project use specific versions of `node`, `yarn` and `terraform`. To make sure your development setup matches with production follow the recommended installation methods.
 
-1. Install and configure the follow tool in your machine
+1. Install and configure the following tools in your machine
 
    - [nodenv](https://github.com/nodenv/nodenv) - Node version manager
    - [tfenv](https://github.com/tfutils/tfenv) - Terraform version manager
